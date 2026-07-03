@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D3.studio — Contenido para Instagram que llega a gente nueva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Literata:opsz,wght@18..144,400;18..144,500;18..144,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#C4AB8C;
+    --paper-dim:#B89A78;
+    --ink:#4E3420;
+    --ink-soft:#7E5A3C;
+    --charcoal:#4B1C71;
+    --cream:#F4EFE4;
+    --signal:#BA83C9;
+    --signal-dim:rgba(186,131,201,0.16);
+    --btn:#EEB1BB;
+    --btn-text:#4E3420;
+    --line-dark:rgba(42,27,16,0.18);
+    --line-light:rgba(244,239,228,0.20);
+    --display:'Playfair Display', serif;
+    --body:'Literata', serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- eyebrow / take label ---------- */
+  .take{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    color:var(--ink-soft);
+  }
+  .take .num{
+    background:var(--charcoal);
+    color:var(--cream);
+    padding:3px 8px;
+    font-weight:500;
+  }
+  .take.on-dark{color:rgba(244,239,228,0.6);}
+  .take.on-dark .num{background:var(--paper); color:var(--charcoal);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--charcoal);
+    color:var(--cream);
+    padding:100px 0 60px;
+    position:relative;
+    border-bottom:1px solid var(--line-light);
+  }
+  .rec-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(244,239,228,0.7);
+    margin-bottom:40px;
+  }
+  .rec-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--signal);
+    animation:pulse 1.6s infinite ease-in-out;
+    flex-shrink:0;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:.25;}
+  }
+  h1{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(38px,7vw,74px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    max-width:820px;
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--signal);
+  }
+  .hero-sub{
+    font-size:18px;
+    line-height:1.5;
+    color:rgba(244,239,228,0.75);
+    max-width:520px;
+    margin-top:28px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:16px 26px;
+    border:1px solid currentColor;
+    border-radius:6px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn-light{color:var(--cream);}
+  .btn-light:hover{background:var(--cream); color:var(--charcoal);}
+  .btn-signal{
+    background:var(--btn);
+    color:var(--btn-text);
+    border-color:var(--btn);
+  }
+  .btn-signal:hover{opacity:.85;}
+  .btn-dark{color:var(--ink); border-color:var(--ink);}
+  .btn-dark:hover{background:var(--ink); color:var(--cream);}
+  .btn-pack-basic{
+    background:#D98A99;
+    border-color:#D98A99;
+    color:var(--ink);
+  }
+  .btn-pack-basic:hover{opacity:.85;}
+  .btn-pack-pro{
+    background:var(--signal);
+    border-color:var(--signal);
+    color:var(--ink);
+  }
+  .btn-pack-pro:hover{opacity:.85;}
+
+  .hero-cta{margin-top:44px; display:flex; gap:14px; flex-wrap:wrap;}
+
+  .timecode-bar{
+    margin-top:70px;
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:11px;
+    color:rgba(244,239,228,0.4);
+    letter-spacing:.06em;
+    border-top:1px solid var(--line-light);
+    padding-top:14px;
+  }
+
+  /* ---------- section base ---------- */
+  section{padding:80px 0;}
+  section.dim{background:var(--paper-dim);}
+  h2{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(28px,4.2vw,42px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+    max-width:680px;
+    margin-bottom:16px;
+  }
+  .section-lede{
+    font-size:16px;
+    color:var(--ink-soft);
+    max-width:560px;
+    line-height:1.55;
+    margin-bottom:48px;
+  }
+
+  /* ---------- CASOS ---------- */
+  .cases-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:20px;
+  }
+  .case-card{
+    background:var(--charcoal);
+    color:var(--cream);
+    aspect-ratio:9/13;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:18px;
+    overflow:hidden;
+  }
+  .case-card::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(135deg, rgba(244,239,228,0.05) 0 2px, transparent 2px 14px);
+  }
+  .case-frame-tag{
+    position:absolute; top:14px; left:14px; right:14px;
+    display:flex; justify-content:space-between;
+    font-family:var(--mono); font-size:10px;
+    color:rgba(244,239,228,0.45);
+    letter-spacing:.05em;
+  }
+  .case-title{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:20px;
+    line-height:1.05;
+    position:relative;
+    z-index:1;
+  }
+  .case-stat{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--signal);
+    margin-top:8px;
+    position:relative;
+    z-index:1;
+  }
+  .case-note{
+    font-family:var(--mono);
+    font-size:10px;
+    color:rgba(244,239,228,0.35);
+    margin-top:10px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- PROCESO ---------- */
+  .process{
+    display:grid;
+    gap:0;
+    border-top:1px solid var(--line-dark);
+  }
+  .process-row{
+    display:grid;
+    grid-template-columns:14px 1fr;
+    gap:20px;
+    padding:28px 0;
+    border-bottom:1px solid var(--line-dark);
+    align-items:start;
+  }
+  .process-marker{
+    width:14px;
+    height:14px;
+    border-radius:4px;
+    margin-top:6px;
+  }
+  .marker-1{background:var(--charcoal);}
+  .marker-2{background:var(--ink);}
+  .marker-3{background:var(--btn);}
+  .process-title{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:24px;
+    margin-bottom:6px;
+  }
+  .process-desc{
+    color:var(--ink-soft);
+    font-size:15px;
+    line-height:1.55;
+    max-width:520px;
+  }
+
+  /* ---------- PACKS ---------- */
+  .packs{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  @media (max-width:720px){ .packs{grid-template-columns:1fr;} }
+  .pack{
+    border:1px solid var(--line-dark);
+    padding:32px 28px;
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+  }
+  .pack.basic{
+    background:var(--btn);
+    border-color:var(--btn);
+  }
+  .pack.basic .pack-price{color:#9C4A5C;}
+  .pack.basic li::before{color:var(--charcoal);}
+  .pack.pro{
+    background:var(--charcoal);
+    color:var(--cream);
+    border-color:var(--charcoal);
+  }
+  .pack-eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
+  .pack.pro .pack-eyebrow{color:rgba(244,239,228,0.5);}
+  .pack-name{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:30px;
+    margin-bottom:4px;
+  }
+  .pack-price{
+    font-family:var(--body);
+    font-weight:500;
+    font-size:22px;
+    color:var(--signal);
+    margin-bottom:24px;
+  }
+  .pack-price span{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-left:6px;
+  }
+  .pack.pro .pack-price span{color:rgba(244,239,228,0.5);}
+  .pack ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:28px;
+    flex:1;
+  }
+  .pack li{
+    font-size:14.5px;
+    line-height:1.4;
+    padding-left:18px;
+    position:relative;
+    color:var(--ink-soft);
+  }
+  .pack.pro li{color:rgba(244,239,228,0.8);}
+  .pack li::before{
+    content:'—';
+    position:absolute; left:0;
+    color:var(--signal);
+  }
+  .pack-note{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:-16px;
+    margin-bottom:20px;
+  }
+  .pack.pro .pack-note{color:rgba(244,239,228,0.45);}
+  .packs-note{
+    font-family:var(--body);
+    font-style:italic;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:32px;
+    max-width:560px;
+  }
+
+  /* ---------- FOOTER / CTA ---------- */
+  footer{
+    background:var(--charcoal);
+    color:var(--cream);
+    padding:90px 0 40px;
+  }
+  footer h2{color:var(--cream); max-width:600px;}
+  .footer-cta{margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;}
+  .footer-tc{
+    margin-top:80px;
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:11px;
+    color:rgba(244,239,228,0.35);
+    border-top:1px solid var(--line-light);
+    padding-top:16px;
+    letter-spacing:.05em;
+  }
+
+  @media (max-width:640px){
+    .hero{padding:70px 0 44px;}
+    section{padding:56px 0;}
+    .process-row{grid-template-columns:1fr; gap:6px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .rec-dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="rec-row"><span class="rec-dot"></span> Grabando — 3D3.studio</div>
+    <h1>Publicás todo<br>el tiempo. ¿Por qué<br>te ven <em>siempre los<br>mismos</em>?</h1>
+    <p class="hero-sub">Hacemos el contenido de Instagram de tu marca pensado para gente que todavía no te sigue — no para repetirle lo mismo a quien ya te conoce.</p>
+    <div class="hero-cta">
+      <a href="#packs" class="btn btn-signal">Ver packs y precios</a>
+      <a href="#casos" class="btn btn-light">Ver casos</a>
+    </div>
+    <div class="timecode-bar">
+      <span>00:00:00:00</span>
+      <span>3D3.STUDIO — BUENOS AIRES, AR</span>
+    </div>
+  </div>
+</div>
+
+<!-- CASOS -->
+<section id="casos">
+  <div class="wrap">
+    <div class="take"><span class="num">TOMA 01</span> Lo que ya hicimos</div>
+    <h2>No es intuición. Es estrategia con números atrás.</h2>
+    <p class="section-lede">Reemplazá estas fichas por 4 a 6 reels reales, con el dato de alcance a no-seguidores o guardados. Sin el número, es portafolio. Con el número, es prueba.</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-frame-tag"><span>REEL_01</span><span>9:16</span></div>
+        <div class="case-title">Marca de indumentaria</div>
+        <div class="case-stat">+ XX% alcance no-seguidores</div>
+        <div class="case-note">[reemplazar por reel real]</div>
+      </div>
+      <div class="case-card">
+        <div class="case-frame-tag"><span>REEL_02</span><span>9:16</span></div>
+        <div class="case-title">Emprendimiento gastronómico</div>
+        <div class="case-stat">XX guardados</div>
+        <div class="case-note">[reemplazar por reel real]</div>
+      </div>
+      <div class="case-card">
+        <div class="case-frame-tag"><span>REEL_03</span><span>9:16</span></div>
+        <div class="case-title">Servicio profesional</div>
+        <div class="case-stat">XX compartidos</div>
+        <div class="case-note">[reemplazar por reel real]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="dim">
+  <div class="wrap">
+    <div class="take"><span class="num">TOMA 02</span> Cómo trabajamos</div>
+    <h2>Tres etapas. Ninguna es "subimos algo lindo".</h2>
+    <div class="process">
+      <div class="process-row">
+        <div class="process-marker marker-1"></div>
+        <div>
+          <div class="process-title">Diagnóstico</div>
+          <div class="process-desc">Miramos qué está pasando con tu cuenta ahora: qué contenido funciona, a quién le está llegando y a quién no.</div>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-marker marker-2"></div>
+        <div>
+          <div class="process-title">Producción</div>
+          <div class="process-desc">Sesión de fotos y video, edición, copy y armado del planner con fechas concretas.</div>
+        </div>
+      </div>
+      <div class="process-row">
+        <div class="process-marker marker-3"></div>
+        <div>
+          <div class="process-title">Distribución</div>
+          <div class="process-desc">Publicamos con foco en alcance a gente nueva: hooks, guardados, compartidos. No en likes de los mismos 400 de siempre.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section id="packs">
+  <div class="wrap">
+    <div class="take"><span class="num">TOMA 03</span> Packs</div>
+    <h2>No hace falta que consultes el precio: te lo dejamos acá mismo.</h2>
+    <div class="packs">
+      <div class="pack basic">
+        <div class="pack-eyebrow">Pack 01</div>
+        <div class="pack-name">Visual Básico</div>
+        <div class="pack-price">$380.000 <span>ARS</span></div>
+        <ul>
+          <li>1 sesión de fotos/video (aprox. 1 hora)</li>
+          <li>4 posteos estáticos</li>
+          <li>3 historias + 3 portadas destacadas</li>
+          <li>2 reels editados</li>
+          <li>Planner quincenal (2 semanas)</li>
+          <li>Respuestas a comentarios</li>
+          <li>Copys y hashtags en tendencia</li>
+          <li>Aviso ante fechas importantes</li>
+        </ul>
+        <a href="#contacto" class="btn btn-pack-basic">Quiero este pack</a>
+      </div>
+      <div class="pack pro">
+        <div class="pack-eyebrow">Pack 02</div>
+        <div class="pack-name">Visual PRO</div>
+        <div class="pack-price">$520.000 <span>ARS</span></div>
+        <div class="pack-note">Entrega desde 2 semanas después de la grabación</div>
+        <ul>
+          <li>2 sesiones de fotos/video</li>
+          <li>6 posteos estáticos</li>
+          <li>8 historias + 5 portadas destacadas</li>
+          <li>2 a 5 reels editados</li>
+          <li>Planner mensual</li>
+          <li>Respuestas a comentarios</li>
+          <li>Copys y hashtags en tendencia</li>
+          <li>Readaptación de logo (opcional, +USD 20)</li>
+        </ul>
+        <a href="#contacto" class="btn btn-pack-pro">Quiero este pack</a>
+      </div>
+    </div>
+    <p class="packs-note">Estos packs son una base de referencia — también los podemos personalizar o armar algo hecho a tu medida.</p>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="take on-dark"><span class="num">CIERRE</span> Siguiente paso</div>
+    <h2>¿Charlamos 15 minutos y vemos qué pack te conviene?</h2>
+    <div class="footer-cta">
+      <a href="https://wa.me/54" class="btn btn-signal">Escribinos por WhatsApp</a>
+    </div>
+    <div class="footer-tc">
+      <span>3D3.STUDIO — @3d3.studio</span>
+      <span>00:00:47:12 — FIN</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

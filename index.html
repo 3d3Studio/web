@@ -608,23 +608,20 @@
 
     <style>
       #casos .cases-grid {
-        max-width: 980px;
+        max-width: 1140px;
         margin: 48px auto 0;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 22px;
+        gap: 0;
       }
 
       #casos .case-card {
-        height: 480px;
+        height: 548px;
         padding: 0 !important;
         background: transparent !important;
         position: relative;
         overflow: hidden;
         isolation: isolate;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
       }
 
       #casos .case-card::before,
@@ -632,10 +629,26 @@
         display: none !important;
       }
 
+      #casos .case-title {
+        margin: 0 0 2px !important;
+        line-height: 0.92 !important;
+      }
+
+      #casos .case-stat {
+        margin: 0 0 3px !important;
+        line-height: 1 !important;
+      }
+
+      #casos .case-note {
+        margin: 0 !important;
+        line-height: 1 !important;
+      }
+
       @media (max-width: 900px) {
         #casos .cases-grid {
           grid-template-columns: 1fr;
           max-width: 360px;
+          gap: 18px;
         }
 
         #casos .case-card {
@@ -651,9 +664,9 @@
           <source src="Antes_desp.mp4" type="video/mp4">
         </video>
 
-        <div style="position: absolute; inset: 0; background:linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: linear-gradient(to top, rgba(52, 10, 68, 0.86), rgba(77, 18, 95, 0.42), transparent); z-index: 1; pointer-events: none;"></div>
 
-        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+        <div style="position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2; pointer-events: none;">
           <div class="case-title">Manicura</div>
           <div class="case-stat">Historia</div>
           <div class="case-note">Antes / después</div>
@@ -665,9 +678,9 @@
           <source src="Historias Andre (3).mp4" type="video/mp4">
         </video>
 
-        <div style="position: absolute; inset: 0; background:linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: linear-gradient(to top, rgba(52, 10, 68, 0.86), rgba(77, 18, 95, 0.42), transparent); z-index: 1; pointer-events: none;"></div>
 
-        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+        <div style="position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2; pointer-events: none;">
           <div class="case-title">Cosmiatra</div>
           <div class="case-stat">Historia</div>
           <div class="case-note"></div>
@@ -679,9 +692,9 @@
           <source src="cabina(1).mp4" type="video/mp4">
         </video>
 
-        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+        <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 34%; background: linear-gradient(to top, rgba(52, 10, 68, 0.86), rgba(77, 18, 95, 0.42), transparent); z-index: 1; pointer-events: none;"></div>
 
-        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+        <div style="position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2; pointer-events: none;">
           <div class="case-title">Manicura</div>
           <div class="case-stat">Reel</div>
           <div class="case-note">Transición</div>

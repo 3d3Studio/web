@@ -303,10 +303,10 @@
   }
 }
 
- /* ---------- AJUSTE FINAL PROCESO ---------- */
+/* ---------- AJUSTE FINAL PROCESO ---------- */
 .process{
   display:grid !important;
-  gap:16px !important;
+  gap:18px !important;
   border-top:0 !important;
   counter-reset:step !important;
 }
@@ -314,28 +314,29 @@
 .process-row{
   position:relative !important;
   display:grid !important;
-  grid-template-columns:64px 1fr !important;
-  gap:20px !important;
-  padding:28px 30px !important;
-  border:1px solid var(--line-dark) !important;
-  border-radius:18px !important;
-  background:var(--paper-dim) !important;
+  grid-template-columns:74px 1fr !important;
+  gap:22px !important;
+  padding:30px 32px !important;
+  border:1px solid rgba(78,52,32,0.18) !important;
+  border-radius:22px !important;
+  background:rgba(244,239,228,0.18) !important;
   align-items:start !important;
 }
 
 .process-row::before{
   counter-increment:step !important;
   content:"0" counter(step) !important;
-  font-family:var(--mono) !important;
-  font-size:12px !important;
-  font-weight:700 !important;
-  letter-spacing:.12em !important;
+  font-family:var(--display) !important;
+  font-size:26px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  letter-spacing:0 !important;
   color:var(--cream) !important;
   background:var(--charcoal) !important;
   border-radius:999px !important;
-  padding:7px 10px !important;
+  padding:10px 14px !important;
   width:max-content !important;
-  margin-top:4px !important;
+  margin-top:0 !important;
 }
 
 .process-marker{
@@ -345,8 +346,8 @@
 .process .process-row .process-title{
   font-family:var(--display) !important;
   font-weight:800 !important;
-  font-size:28px !important;
-  line-height:1 !important;
+  font-size:30px !important;
+  line-height:1.05 !important;
   color:var(--ink) !important;
   margin-bottom:10px !important;
 }
@@ -354,32 +355,42 @@
 .process .process-row .process-desc{
   font-family:var(--body) !important;
   color:var(--ink-soft) !important;
-  font-size:15.5px !important;
+  font-size:16px !important;
   line-height:1.6 !important;
-  max-width:620px !important;
+  max-width:640px !important;
 }
 
+/* Colores de marca por etapa */
 .process-row:nth-child(1)::before{
   background:var(--charcoal) !important;
+  color:var(--cream) !important;
 }
 
 .process-row:nth-child(2)::before{
   background:var(--ink) !important;
+  color:var(--cream) !important;
 }
 
 .process-row:nth-child(3)::before{
   background:var(--btn) !important;
-  color:var(--btn-text) !important;
+  color:var(--ink) !important;
 }
 
 @media (max-width:640px){
   .process-row{
     grid-template-columns:1fr !important;
-    gap:12px !important;
+    gap:14px !important;
     padding:24px 22px !important;
   }
-}
 
+  .process-row::before{
+    font-size:22px !important;
+  }
+
+  .process .process-row .process-title{
+    font-size:27px !important;
+  }
+}
   /* ---------- PACKS ---------- */
   .packs{
     display:grid;

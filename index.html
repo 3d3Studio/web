@@ -180,12 +180,13 @@
 
   /* ---------- CASOS ---------- */
  <style>
-  #casos .cases-grid {
-    width: min(100%, 930px) !important;
-    margin: 48px auto 0 !important;
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 22px !important;
+ #casos .cases-grid {
+  width: min(100%, 980px) !important;
+  margin: 48px auto 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+}
   }
 
   #casos .case-card {

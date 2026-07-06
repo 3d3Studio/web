@@ -599,8 +599,26 @@
 .process-row:nth-child(3) .process-title{
   color:#C97F8D !important;
 }
+
+  .process .process-row::before {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 62px !important;
+  height: 50px !important;
+  padding: 0 0 2px 0 !important;
+
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+  
 </style>
 </head>
+
+
+
+  
 <body>
 
 <!-- HERO -->
@@ -704,7 +722,7 @@
         <div class="process-marker marker-2"></div>
         <div>
           <div class="process-title">Creamos</div>
-          <div class="process-desc">Creamos contenido que represente tu identidad. Cada foto, video y texto tiene una intención.</div>
+          <div class="process-desc">Creamos contenido que represente tu identidad. Cada foto, video y texto <br> tiene una intención.</div>
         </div>
       </div>
       <div class="process-row">

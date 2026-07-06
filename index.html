@@ -595,7 +595,6 @@
 </div>
 
 <!-- CASOS -->
-<!-- CASOS -->
 <section id="casos">
   <div class="wrap">
     <div class="take"><span class="num">Sección 01</span> Nuestros trabajos</div>
@@ -607,67 +606,91 @@
       Nuestro trabajo es encontrar esa esencia y hacer que se vea.
     </p>
 
- <div class="cases-grid">
+    <style>
+      #casos .cases-grid {
+        max-width: 980px;
+        margin: 48px auto 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
 
-  <div class="case-card" style="position: relative; overflow: hidden;">
-    <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-      <source src="Antes_desp.mp4" type="video/mp4">
-    </video>
+      #casos .case-card {
+        height: 480px;
+        padding: 0 !important;
+        background: transparent !important;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
 
-    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(48, 8, 70, 0.75), rgba(48, 8, 70, 0.15)); z-index: 1; pointer-events: none;"></div>
+      #casos .case-card::before,
+      #casos .case-card::after {
+        display: none !important;
+      }
 
-    <div class="case-frame-tag" style="position: relative; z-index: 2;">
-      <span>REEL_01</span>
-      <span>9:16</span>
-    </div>
+      @media (max-width: 900px) {
+        #casos .cases-grid {
+          grid-template-columns: 1fr;
+          max-width: 360px;
+        }
 
-    <div style="position: relative; z-index: 2; margin-top: auto;">
-      <div class="case-title">Marca de indumentaria</div>
-      <div class="case-stat">Contenido audiovisual</div>
-      <div class="case-note">Antes / después</div>
+        #casos .case-card {
+          height: 520px;
+        }
+      }
+    </style>
+
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+          <source src="Antes_desp.mp4" type="video/mp4">
+        </video>
+
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+
+        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+          <div class="case-title">Manicura</div>
+          <div class="case-stat">Historia</div>
+          <div class="case-note">Antes / después</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+          <source src="Historias Andre (3).mp4" type="video/mp4">
+        </video>
+
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+
+        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+          <div class="case-title">Cosmiatra</div>
+          <div class="case-stat">Historia</div>
+          <div class="case-note"></div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+          <source src="cabina(1).mp4" type="video/mp4">
+        </video>
+
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12), transparent); z-index: 1; pointer-events: none;"></div>
+
+        <div style="position: relative; z-index: 2; padding: 0 22px 24px; pointer-events: none;">
+          <div class="case-title">Manicura</div>
+          <div class="case-stat">Reel</div>
+          <div class="case-note">Transición</div>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div class="case-card" style="position: relative; overflow: hidden;">
-    <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-      <source src="Historias Andre (3).mp4" type="video/mp4">
-    </video>
-
-    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(48, 8, 70, 0.75), rgba(48, 8, 70, 0.15)); z-index: 1; pointer-events: none;"></div>
-
-    <div class="case-frame-tag" style="position: relative; z-index: 2;">
-      <span>REEL_02</span>
-      <span>9:16</span>
-    </div>
-
-    <div style="position: relative; z-index: 2; margin-top: auto;">
-      <div class="case-title">Historias Andre</div>
-      <div class="case-stat">Contenido para redes</div>
-      <div class="case-note">Historias / reel</div>
-    </div>
-  </div>
-
-  <div class="case-card" style="position: relative; overflow: hidden;">
-    <video autoplay muted loop playsinline controls style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-      <source src="cabina(1).mp4" type="video/mp4">
-    </video>
-
-    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(48, 8, 70, 0.75), rgba(48, 8, 70, 0.15)); z-index: 1; pointer-events: none;"></div>
-
-    <div class="case-frame-tag" style="position: relative; z-index: 2;">
-      <span>REEL_03</span>
-      <span>9:16</span>
-    </div>
-
-    <div style="position: relative; z-index: 2; margin-top: auto;">
-      <div class="case-title">Cabina</div>
-      <div class="case-stat">Producción audiovisual</div>
-      <div class="case-note">Reel de portfolio</div>
-    </div>
-  </div>
-
-</div>
-    </section>
+</section>
 <!-- PROCESO -->
 <section class="dim">
   <div class="wrap">

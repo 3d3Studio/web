@@ -263,18 +263,28 @@
     margin-bottom:48px;
   }
 
-  /* ---------- CASOS ---------- */
+ /* ---------- CASOS ---------- */
 
-#casos .cases-grid{
+#casos .cases-carousel{
+  position:relative;
   width:min(100%,360px);
   margin:48px auto 0;
+}
+
+#casos .cases-grid{
+  width:100%;
   display:flex;
   gap:18px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
-  padding-bottom:14px;
   -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+#casos .cases-grid::-webkit-scrollbar{
+  display:none;
 }
 
 #casos .case-card{
@@ -289,73 +299,120 @@
   scroll-snap-align:center;
 }
 
-  #casos .case-card::before,
-  #casos .case-card::after{
-    display:none !important;
-    content:none !important;
+#casos .case-card::before,
+#casos .case-card::after{
+  display:none !important;
+  content:none !important;
+}
+
+#casos .case-card video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+
+#casos .case-gradient{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:38%;
+  background:linear-gradient(
+    to top,
+    rgba(55,8,74,0.84),
+    rgba(80,20,105,0.36),
+    transparent
+  );
+  z-index:1;
+  pointer-events:none;
+}
+
+#casos .case-text{
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  z-index:2;
+  pointer-events:none;
+}
+
+#casos .case-title{
+  margin:0 0 4px;
+  font-family:var(--display);
+  font-size:24px;
+  font-weight:800;
+  line-height:0.9;
+  color:#fff8fb;
+}
+
+#casos .case-stat{
+  margin:0 0 5px;
+  font-size:15px;
+  font-weight:500;
+  line-height:1;
+  color:#e8b7ff;
+}
+
+#casos .case-note{
+  margin:0;
+  font-size:12px;
+  font-weight:500;
+  line-height:1;
+  color:rgba(255,248,251,0.78);
+}
+
+#casos .cases-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:999px;
+  background:rgba(75,28,113,0.88);
+  color:var(--cream);
+  font-size:32px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:5;
+  padding:0;
+}
+
+#casos .cases-arrow.prev{
+  left:-56px;
+}
+
+#casos .cases-arrow.next{
+  right:-56px;
+}
+
+#casos .cases-arrow:hover{
+  opacity:.86;
+}
+
+@media (max-width:640px){
+  #casos .cases-carousel{
+    width:min(100%,340px);
   }
 
-  #casos .case-card video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:0;
+  #casos .cases-arrow{
+    width:38px;
+    height:38px;
+    font-size:28px;
   }
 
-  #casos .case-gradient{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    height:38%;
-    background:linear-gradient(
-      to top,
-      rgba(55,8,74,0.84),
-      rgba(80,20,105,0.36),
-      transparent
-    );
-    z-index:1;
-    pointer-events:none;
+  #casos .cases-arrow.prev{
+    left:8px;
   }
 
-  #casos .case-text{
-    position:absolute;
-    left:24px;
-    right:24px;
-    bottom:24px;
-    z-index:2;
-    pointer-events:none;
-  }
-
-  #casos .case-title{
-    margin:0 0 4px;
-    font-family:var(--display);
-    font-size:24px;
-    font-weight:800;
-    line-height:0.9;
-    color:#fff8fb;
-  }
-
-  #casos .case-stat{
-    margin:0 0 5px;
-    font-size:15px;
-    font-weight:500;
-    line-height:1;
-    color:#e8b7ff;
-  }
-
-  #casos .case-note{
-    margin:0;
-    font-size:12px;
-    font-weight:500;
-    line-height:1;
-    color:rgba(255,248,251,0.78);
-  }
-
-  #casos .case-card{
-    flex-basis:min(82vw, 320px);
+  #casos .cases-arrow.next{
+    right:8px;
   }
 }
 
@@ -676,60 +733,19 @@ footer h2{
 <!-- CASOS -->
 <section id="casos">
   <div class="wrap">
-    <div class="take"><span class="num">Sección 01</span> Nuestros trabajos</div>
 
-    <h2>Así se ve una marca <br> cuando encuentra su voz</h2>
+    <!-- texto de la sección -->
 
-    <p class="section-lede">
-      Cada proyecto refleja una identidad distinta. <br>
-      Nuestro trabajo es encontrar esa esencia y hacer que se vea.
-    </p>
+    <div class="cases-carousel">
+      <button class="cases-arrow prev" aria-label="Anterior">‹</button>
 
-    <div class="cases-grid">
-
-      <div class="case-card">
-        <video autoplay muted loop playsinline controls>
-          <source src="Antes_desp.mp4" type="video/mp4">
-        </video>
-
-        <div class="case-gradient"></div>
-
-        <div class="case-text">
-          <div class="case-title">Manicura</div>
-          <div class="case-stat">Historia</div>
-          <div class="case-note">Antes / después</div>
-        </div>
+      <div class="cases-grid">
+        <!-- videos -->
       </div>
 
-      <div class="case-card">
-        <video autoplay muted loop playsinline controls>
-          <source src="Historias Andre (3).mp4" type="video/mp4">
-        </video>
-
-        <div class="case-gradient"></div>
-
-        <div class="case-text">
-          <div class="case-title">Cosmiatra</div>
-          <div class="case-stat">Historia</div>
-          <div class="case-note"></div>
-        </div>
-      </div>
-
-      <div class="case-card">
-        <video autoplay muted loop playsinline controls>
-          <source src="cabina(1).mp4" type="video/mp4">
-        </video>
-
-        <div class="case-gradient"></div>
-
-        <div class="case-text">
-          <div class="case-title">Manicura</div>
-          <div class="case-stat">Reel</div>
-          <div class="case-note">Transición</div>
-        </div>
-      </div>
-
+      <button class="cases-arrow next" aria-label="Siguiente">›</button>
     </div>
+
   </div>
 </section>
   

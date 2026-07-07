@@ -263,22 +263,24 @@
     margin-bottom:48px;
   }
 
- /* ---------- CASOS ---------- */
+/* ---------- CASOS ---------- */
 
 #casos .cases-carousel{
   position:relative;
-  width:min(100%,360px);
+  width:min(100%,980px);
   margin:48px auto 0;
 }
 
 #casos .cases-grid{
   width:100%;
   display:flex;
-  gap:18px;
+  gap:24px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
   -webkit-overflow-scrolling:touch;
+
+  /* Oculta la barra fea */
   scrollbar-width:none;
   -ms-overflow-style:none;
 }
@@ -287,16 +289,16 @@
   display:none;
 }
 
+/* En compu: se ven 3 cards como al principio */
 #casos .case-card{
   position:relative;
-  flex:0 0 100%;
-  width:100%;
+  flex:0 0 calc((100% - 48px) / 3);
   aspect-ratio:9 / 16;
   overflow:hidden;
   isolation:isolate;
   background:transparent;
   border-radius:12px;
-  scroll-snap-align:center;
+  scroll-snap-align:start;
 }
 
 #casos .case-card::before,
@@ -364,6 +366,7 @@
   color:rgba(255,248,251,0.78);
 }
 
+/* Flechas */
 #casos .cases-arrow{
   position:absolute;
   top:50%;
@@ -396,9 +399,18 @@
   opacity:.86;
 }
 
-@media (max-width:640px){
+/* En celu: se ve 1 video por vez, pero se desliza con dedo o flechas */
+@media (max-width:720px){
   #casos .cases-carousel{
     width:min(100%,340px);
+  }
+
+  #casos .cases-grid{
+    gap:18px;
+  }
+
+  #casos .case-card{
+    flex:0 0 100%;
   }
 
   #casos .cases-arrow{
@@ -839,6 +851,37 @@ footer h2{
 </div>
   </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.querySelector('#casos .cases-grid');
+  const prevBtn = document.querySelector('#casos .cases-arrow.prev');
+  const nextBtn = document.querySelector('#casos .cases-arrow.next');
 
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const card = track.querySelector('.case-card');
+    if (!card) return track.clientWidth;
+
+    const gap = parseInt(getComputedStyle(track).gap) || 0;
+    return card.offsetWidth + gap;
+  }
+
+  prevBtn.addEventListener('click', function () {
+    track.scrollBy({
+      left: -getScrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+
+  nextBtn.addEventListener('click', function () {
+    track.scrollBy({
+      left: getScrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+  
 </body>
 </html>

@@ -761,34 +761,70 @@ footer h2{
   </div>
 </section>
   
-<!-- PROCESO -->
-<section class="dim">
+<!-- CASOS -->
+<section id="casos">
   <div class="wrap">
-    <div class="take"><span class="num">Sección 02</span> Cómo trabajamos</div>
-    <h2>No empezamos creando. Empezamos escuchando</h2>
-    <div class="process">
-      <div class="process-row">
-        <div class="process-marker marker-1"></div>
-        <div>
-          <div class="process-title">Nos conocemos</div>
-          <div class="process-desc">Cada marca tiene una identidad propia. Nos tomamos el tiempo para entender cómo hablás, qué querés transmitir y qué te hace diferente.</div>
+    <div class="take"><span class="num">Sección 01</span> Nuestros trabajos</div>
+
+    <h2>Así se ve una marca <br> cuando encuentra su voz</h2>
+
+    <p class="section-lede">
+      Cada proyecto refleja una identidad distinta. <br>
+      Nuestro trabajo es encontrar esa esencia y hacer que se vea.
+    </p>
+
+    <div class="cases-carousel">
+      <button class="cases-arrow prev" aria-label="Anterior">‹</button>
+
+      <div class="cases-grid">
+
+        <div class="case-card">
+          <video autoplay muted loop playsinline controls>
+            <source src="Antes_desp.mp4" type="video/mp4">
+          </video>
+
+          <div class="case-gradient"></div>
+
+          <div class="case-text">
+            <div class="case-title">Manicura</div>
+            <div class="case-stat">Historia</div>
+            <div class="case-note">Antes / después</div>
+          </div>
         </div>
-      </div>
-      <div class="process-row">
-        <div class="process-marker marker-2"></div>
-        <div>
-          <div class="process-title">Creamos</div>
-          <div class="process-desc">Creamos contenido que represente tu identidad. Cada foto, video y texto <br> tiene una intención.</div>
+
+        <div class="case-card">
+          <video autoplay muted loop playsinline controls>
+            <source src="Historias Andre (3).mp4" type="video/mp4">
+          </video>
+
+          <div class="case-gradient"></div>
+
+          <div class="case-text">
+            <div class="case-title">Cosmiatra</div>
+            <div class="case-stat">Historia</div>
+            <div class="case-note"></div>
+          </div>
         </div>
-      </div>
-      <div class="process-row">
-        <div class="process-marker marker-3"></div>
-        <div>
-          <div class="process-title">Potenciamos</div>
-          <div class="process-desc">Tu contenido es la vidriera de tu marca. Te ayudamos a resaltar el valor de tu marca y que genere una primera impresión que invite a quedarse.</div>
+
+        <div class="case-card">
+          <video autoplay muted loop playsinline controls>
+            <source src="cabina(1).mp4" type="video/mp4">
+          </video>
+
+          <div class="case-gradient"></div>
+
+          <div class="case-text">
+            <div class="case-title">Manicura</div>
+            <div class="case-stat">Reel</div>
+            <div class="case-note">Transición</div>
+          </div>
         </div>
+
       </div>
+
+      <button class="cases-arrow next" aria-label="Siguiente">›</button>
     </div>
+
   </div>
 </section>
 
@@ -851,6 +887,37 @@ footer h2{
 </div>
   </div>
 </footer>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.querySelector('#casos .cases-grid');
+  const prevBtn = document.querySelector('#casos .cases-arrow.prev');
+  const nextBtn = document.querySelector('#casos .cases-arrow.next');
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function getScrollAmount() {
+    const card = track.querySelector('.case-card');
+    if (!card) return track.clientWidth;
+
+    const gap = parseInt(getComputedStyle(track).gap) || 0;
+    return card.offsetWidth + gap;
+  }
+
+  prevBtn.addEventListener('click', function () {
+    track.scrollBy({
+      left: -getScrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+
+  nextBtn.addEventListener('click', function () {
+    track.scrollBy({
+      left: getScrollAmount(),
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
 
   
 </body>

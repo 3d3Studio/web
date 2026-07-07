@@ -265,22 +265,27 @@
 
   /* ---------- CASOS ---------- */
 
-  #casos .cases-grid{
-    width:min(100%,980px);
-    margin:48px auto 0;
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:24px;
-  }
+ #casos .cases-grid{
+  width:min(100%,980px);
+  margin:48px auto 0;
+  display:flex;
+  gap:24px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding-bottom:14px;
+  -webkit-overflow-scrolling:touch;
+}
 
  #casos .case-card{
   position:relative;
-  width:100%;
+  flex:0 0 min(78vw, 310px);
   aspect-ratio:9 / 16;
   overflow:hidden;
   isolation:isolate;
   background:transparent;
-  border-radius:13px;
+  border-radius:12px;
+  scroll-snap-align:center;
 }
 
   #casos .case-card::before,
@@ -348,13 +353,20 @@
     color:rgba(255,248,251,0.78);
   }
 
-  @media (max-width:900px){
-    #casos .cases-grid{
-      grid-template-columns:1fr;
-      width:min(100%,340px);
-      gap:18px;
-    }
+ @media (max-width:900px){
+  #casos .cases-grid{
+    width:100%;
+    gap:18px;
+    padding-left:24px;
+    padding-right:24px;
+    margin-left:-24px;
+    margin-right:-24px;
   }
+
+  #casos .case-card{
+    flex-basis:min(82vw, 320px);
+  }
+}
 
   /* ---------- PROCESO ---------- */
 

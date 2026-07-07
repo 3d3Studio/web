@@ -265,11 +265,11 @@
 
   /* ---------- CASOS ---------- */
 
- #casos .cases-grid{
-  width:min(100%,980px);
+#casos .cases-grid{
+  width:min(100%,360px);
   margin:48px auto 0;
   display:flex;
-  gap:24px;
+  gap:18px;
   overflow-x:auto;
   scroll-snap-type:x mandatory;
   scroll-behavior:smooth;
@@ -277,9 +277,10 @@
   -webkit-overflow-scrolling:touch;
 }
 
- #casos .case-card{
+#casos .case-card{
   position:relative;
-  flex:0 0 min(78vw, 310px);
+  flex:0 0 100%;
+  width:100%;
   aspect-ratio:9 / 16;
   overflow:hidden;
   isolation:isolate;
@@ -351,16 +352,6 @@
     font-weight:500;
     line-height:1;
     color:rgba(255,248,251,0.78);
-  }
-
- @media (max-width:900px){
-  #casos .cases-grid{
-    width:100%;
-    gap:18px;
-    padding-left:24px;
-    padding-right:24px;
-    margin-left:-24px;
-    margin-right:-24px;
   }
 
   #casos .case-card{

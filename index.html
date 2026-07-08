@@ -399,6 +399,11 @@
   opacity:.86;
 }
 
+  #casos .case-card.post-format{
+  aspect-ratio:4 / 5;
+  align-self:center;
+}
+
 /* En celu: se ve 1 video por vez, pero se desliza con dedo o flechas */
 @media (max-width:720px){
   #casos .cases-carousel{
@@ -799,6 +804,20 @@ footer h2{
             <div class="case-title">Manicura</div>
             <div class="case-stat">Reel</div>
             <div class="case-note">Transición</div>
+          </div>
+        </div>
+
+                <div class="case-card post-format">
+          <video autoplay muted loop playsinline controls>
+            <source src="productos.mp4" type="video/mp4">
+          </video>
+
+          <div class="case-gradient"></div>
+
+          <div class="case-text">
+            <div class="case-title">Productos</div>
+            <div class="case-stat">Post</div>
+            <div class="case-note">Formato 1080 x 1350</div>
           </div>
         </div>
 

@@ -704,6 +704,59 @@
 .pack.pro .pack-desc{
   color:rgba(244,239,228,0.78);
 }
+
+  .packs-intro-box{
+  max-width:980px;
+  margin:24px 0 46px;
+}
+
+.packs-main-text{
+  max-width:820px;
+  font-size:22px;
+  line-height:1.35;
+  color:var(--ink);
+  margin-bottom:28px;
+}
+
+.packs-mini-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.packs-mini{
+  background:rgba(244,239,228,0.18);
+  border:1px solid rgba(78,52,32,0.14);
+  border-radius:16px;
+  padding:18px 18px 20px;
+}
+
+.packs-mini span{
+  display:inline-flex;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.1em;
+  color:var(--cream);
+  background:var(--charcoal);
+  padding:4px 8px;
+  margin-bottom:14px;
+}
+
+.packs-mini p{
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+@media (max-width:720px){
+  .packs-main-text{
+    font-size:19px;
+  }
+
+  .packs-mini-grid{
+    grid-template-columns:1fr;
+  }
+}
   
   /* ---------- FOOTER / CTA ---------- */
 

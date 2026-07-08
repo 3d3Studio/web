@@ -801,8 +801,71 @@ footer h2{
   filter:drop-shadow(0 0 6px rgba(244,239,228,0.45));
 }
 
-/* AJUSTE DE TÍTULOS CHICOS - INDEX */
+/* AJUSTE FINAL DE LEGIBILIDAD - INDEX */
 
+/* Labels tipo SECCIÓN 02 */
+.take{
+  font-size:13px;
+  letter-spacing:.12em;
+}
+
+.take .num{
+  font-weight:700;
+  padding:4px 10px;
+}
+
+/* Sección proceso */
+section.dim h2{
+  font-size:clamp(36px,5vw,56px);
+  line-height:0.98;
+  color:var(--ink);
+  max-width:780px;
+  margin-bottom:30px;
+}
+
+.process-row{
+  background:rgba(244,239,228,0.34);
+  border:1px solid rgba(78,52,32,0.22);
+}
+
+.process-title{
+  font-size:clamp(32px,3.3vw,42px);
+  line-height:1;
+  margin-bottom:12px;
+  text-shadow:none !important;
+}
+
+.process-desc{
+  font-size:18px;
+  line-height:1.55;
+  color:#5B3A25;
+  max-width:760px;
+}
+
+.process-row::before{
+  font-size:25px;
+  font-weight:900;
+}
+
+.process-row:nth-child(1) .process-title{
+  color:var(--charcoal);
+}
+
+.process-row:nth-child(2) .process-title{
+  color:var(--ink);
+}
+
+.process-row:nth-child(3) .process-title{
+  color:#9C4A5C;
+  text-shadow:none !important;
+}
+
+.process-row:nth-child(3)::before{
+  background:#D98A99;
+  color:var(--ink);
+}
+
+/* Títulos chicos de la sección packs */
 #packs h3{
   font-family:var(--display);
   font-size:clamp(28px,3.5vw,40px);
@@ -812,33 +875,17 @@ footer h2{
 }
 
 .pack-subtitle{
-  font-size:19px;
+  font-size:14px;
   letter-spacing:.1em;
   font-weight:700;
 }
 
-.packs-mini span{
-  font-size:17px;
-  letter-spacing:.12em;
-  font-weight:700;
-  padding:5px 10px;
-}
-
+.packs-mini span,
 .pack-eyebrow{
-  font-size:17px;
+  font-size:13px;
   letter-spacing:.12em;
   font-weight:700;
 }
-
-.take{
-  font-size:17px;
-}
-
-.take .num{
-  font-weight:700;
-  padding:4px 10px;
-}
-  
 </style>
 </head>
 

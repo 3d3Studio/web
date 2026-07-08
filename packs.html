@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>3D3.studio - Packs de contenido</title>
+
+<link rel="icon" type="image/png" href="./favicon.png?v=3">
+<link rel="shortcut icon" type="image/png" href="./favicon.png?v=3">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Literata:opsz,wght@18..144,400;18..144,500;18..144,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#C4AB8C;
+  --paper-dim:#B89A78;
+  --ink:#4E3420;
+  --ink-soft:#7E5A3C;
+  --charcoal:#4B1C71;
+  --cream:#F4EFE4;
+  --signal:#BA83C9;
+  --btn:#EEB1BB;
+  --btn-dark:#D98A99;
+  --line-dark:rgba(42,27,16,0.18);
+  --line-light:rgba(244,239,228,0.22);
+  --display:'Playfair Display', serif;
+  --body:'Literata', serif;
+  --mono:'IBM Plex Mono', monospace;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:var(--body);
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+section{
+  padding:82px 0;
+}
+
+.take{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+  color:var(--ink-soft);
+}
+
+.take .num{
+  background:var(--charcoal);
+  color:var(--cream);
+  padding:4px 9px;
+  font-weight:700;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-family:var(--mono);
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:16px 24px;
+  border:1px solid currentColor;
+  border-radius:8px;
+  transition:opacity .15s ease, background .15s ease, color .15s ease;
+}
+
+.btn:hover{
+  opacity:.86;
+}
+
+.btn-main{
+  background:var(--btn);
+  border-color:var(--btn);
+  color:var(--ink);
+}
+
+.btn-outline{
+  color:var(--cream);
+  border-color:rgba(244,239,228,0.55);
+}
+
+.btn-outline:hover{
+  background:var(--cream);
+  color:var(--charcoal);
+}
+
+/* HERO */
+
+.hero{
+  background:var(--charcoal);
+  color:var(--cream);
+  padding:88px 0 64px;
+  border-bottom:1px solid var(--line-light);
+}
+
+.nav-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  margin-bottom:78px;
+}
+
+.logo-mark{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(244,239,228,0.62);
+}
+
+.hero h1{
+  font-family:var(--display);
+  font-weight:900;
+  font-size:clamp(42px,7vw,82px);
+  line-height:.95;
+  letter-spacing:-.02em;
+  max-width:880px;
+}
+
+.hero h1 em{
+  font-style:normal;
+  color:var(--signal);
+}
+
+.hero-text{
+  max-width:670px;
+  font-size:18px;
+  line-height:1.55;
+  color:rgba(244,239,228,.76);
+  margin-top:28px;
+}
+
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:38px;
+}
+
+/* INTRO PACKS */
+
+.pack-summary{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-top:42px;
+}
+
+.summary-card{
+  border:1px solid var(--line-dark);
+  border-radius:18px;
+  padding:28px;
+  background:rgba(244,239,228,.18);
+}
+
+.summary-card.pro{
+  background:var(--charcoal);
+  color:var(--cream);
+  border-color:var(--charcoal);
+}
+
+.summary-eyebrow{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:12px;
+}
+
+.summary-card.pro .summary-eyebrow{
+  color:rgba(244,239,228,.55);
+}
+
+.summary-card h2{
+  font-family:var(--display);
+  font-size:34px;
+  line-height:1;
+  margin-bottom:10px;
+}
+
+.summary-time{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:20px;
+}
+
+.summary-card.pro .summary-time{
+  color:rgba(244,239,228,.58);
+}
+
+.summary-card p{
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  margin-bottom:18px;
+}
+
+.summary-card.pro p{
+  color:rgba(244,239,228,.78);
+}
+
+.price{
+  font-family:var(--display);
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+  margin-top:22px;
+}
+
+.price span{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+/* 3 COLUMNAS */
+
+.detail-section{
+  background:var(--paper-dim);
+}
+
+.section-title{
+  max-width:760px;
+  margin-bottom:44px;
+}
+
+.section-title h2{
+  font-family:var(--display);
+  font-size:clamp(34px,5vw,58px);
+  line-height:.98;
+  letter-spacing:-.02em;
+  margin-bottom:18px;
+}
+
+.section-title p{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink-soft);
+}
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  align-items:stretch;
+}
+
+.service-card{
+  border-radius:22px;
+  overflow:hidden;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  border:1px solid var(--line-dark);
+}
+
+.service-head{
+  padding:26px 24px 24px;
+  min-height:180px;
+}
+
+.service-number{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+
+.service-card h3{
+  font-family:var(--display);
+  font-size:32px;
+  line-height:.96;
+  letter-spacing:-.01em;
+  margin-bottom:14px;
+}
+
+.service-head p{
+  font-size:15px;
+  line-height:1.45;
+}
+
+.service-body{
+  padding:24px;
+  background:rgba(244,239,228,.18);
+  flex:1;
+}
+
+.service-card.design .service-head{
+  background:var(--ink);
+  color:var(--cream);
+}
+
+.service-card.design .service-number,
+.service-card.design .service-head p{
+  color:rgba(244,239,228,.72);
+}
+
+.service-card.camera .service-head{
+  background:var(--charcoal);
+  color:var(--cream);
+}
+
+.service-card.camera .service-number,
+.service-card.camera .service-head p{
+  color:rgba(244,239,228,.72);
+}
+
+.service-card.cm .service-head{
+  background:var(--btn);
+  color:var(--ink);
+}
+
+.service-card.cm .service-number,
+.service-card.cm .service-head p{
+  color:rgba(78,52,32,.72);
+}
+
+.service-block{
+  margin-bottom:24px;
+}
+
+.service-block:last-child{
+  margin-bottom:0;
+}
+
+.service-block h4{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+
+.service-block ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+
+.service-block li{
+  position:relative;
+  padding-left:18px;
+  font-size:14.5px;
+  line-height:1.42;
+  color:var(--ink-soft);
+}
+
+.service-block li::before{
+  content:"";
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--charcoal);
+  position:absolute;
+  left:0;
+  top:.58em;
+}
+
+.service-card.design li::before{
+  background:var(--ink);
+}
+
+.service-card.camera li::before{
+  background:var(--charcoal);
+}
+
+.service-card.cm li::before{
+  background:#D98A99;
+}
+
+/* COMPARATIVA */
+
+.compare-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.compare-card{
+  border-radius:22px;
+  border:1px solid var(--line-dark);
+  padding:30px;
+  background:rgba(244,239,228,.20);
+}
+
+.compare-card.pro{
+  background:var(--charcoal);
+  border-color:var(--charcoal);
+  color:var(--cream);
+}
+
+.compare-card h3{
+  font-family:var(--display);
+  font-size:38px;
+  line-height:.95;
+  margin-bottom:12px;
+}
+
+.compare-kicker{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-bottom:22px;
+}
+
+.compare-card.pro .compare-kicker{
+  color:rgba(244,239,228,.58);
+}
+
+.compare-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:24px 0;
+}
+
+.compare-list li{
+  position:relative;
+  padding-left:22px;
+  font-size:15px;
+  line-height:1.45;
+  color:var(--ink-soft);
+}
+
+.compare-card.pro .compare-list li{
+  color:rgba(244,239,228,.78);
+}
+
+.compare-list li::before{
+  content:"+";
+  position:absolute;
+  left:0;
+  top:0;
+  font-family:var(--mono);
+  color:var(--charcoal);
+  font-weight:700;
+}
+
+.compare-card.pro .compare-list li::before{
+  color:var(--signal);
+}
+
+.note-box{
+  margin-top:34px;
+  border-radius:20px;
+  background:rgba(244,239,228,.18);
+  border:1px solid rgba(78,52,32,.14);
+  padding:24px;
+  max-width:760px;
+}
+
+.note-box p{
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink-soft);
+}
+
+/* CTA */
+
+.cta{
+  background:var(--charcoal);
+  color:var(--cream);
+}
+
+.cta h2{
+  font-family:var(--display);
+  font-size:clamp(34px,5vw,58px);
+  line-height:.98;
+  max-width:780px;
+  margin-bottom:22px;
+}
+
+.cta p{
+  font-size:17px;
+  line-height:1.55;
+  color:rgba(244,239,228,.72);
+  max-width:600px;
+  margin-bottom:34px;
+}
+
+.footer-line{
+  margin-top:70px;
+  padding-top:16px;
+  border-top:1px solid var(--line-light);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  color:rgba(244,239,228,.36);
+}
+
+@media (max-width:920px){
+  .service-grid,
+  .pack-summary,
+  .compare-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:70px 0 54px;
+  }
+
+  .nav-top{
+    margin-bottom:52px;
+  }
+}
+
+@media (max-width:640px){
+  section{
+    padding:62px 0;
+  }
+
+  .wrap{
+    padding:0 20px;
+  }
+
+  .hero h1{
+    font-size:44px;
+  }
+
+  .service-card h3,
+  .summary-card h2,
+  .compare-card h3{
+    font-size:30px;
+  }
+
+  .footer-line{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="nav-top">
+      <a href="index.html" class="logo-mark">3D3.STUDIO</a>
+      <a href="index.html#contacto" class="btn btn-outline">Agendar reunión</a>
+    </div>
+
+    <div class="take on-dark"><span class="num">Packs</span> Contenido para marcas</div>
+
+    <h1>Packs para que tu marca <em>se vea como se tiene que ver.</em></h1>
+
+    <p class="hero-text">
+      Diseñamos, producimos y ordenamos contenido para que tus redes tengan una presencia más cuidada, más activa y más alineada a lo que querés comunicar.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#detalle" class="btn btn-main">Ver qué incluye</a>
+      <a href="#comparativa" class="btn btn-outline">Comparar packs</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="take"><span class="num">Base</span> Dos formas de trabajar</div>
+
+    <div class="section-title">
+      <h2>Elegís el ritmo. Nosotras armamos el contenido.</h2>
+      <p>
+        Trabajamos con dos packs base: uno para cubrir una quincena y otro para sostener el contenido durante el mes. Ambos pueden adaptarse según la etapa, necesidad y energía de tu marca.
+      </p>
+    </div>
+
+    <div class="pack-summary">
+      <article class="summary-card">
+        <div class="summary-eyebrow">PACK 01</div>
+        <h2>Pack Visual Básico</h2>
+        <div class="summary-time">Contenido pensado para 2 semanas</div>
+
+        <p>
+          Para marcas que quieren empezar a ordenar sus redes con contenido propio, cuidado y listo para publicar.
+        </p>
+
+        <p>
+          Incluye producción de fotos/video, piezas para redes, reels, historias, descripciones, hashtags y contenido organizado para una quincena.
+        </p>
+
+        <div class="price">Desde $379.999 <span>ARS</span></div>
+      </article>
+
+      <article class="summary-card pro">
+        <div class="summary-eyebrow">PACK 02</div>
+        <h2>Pack Visual PRO</h2>
+        <div class="summary-time">Contenido pensado para 1 mes</div>
+
+        <p>
+          Para marcas que quieren sostener una presencia más constante en redes, con más variedad visual y una propuesta mensual de contenido.
+        </p>
+
+        <p>
+          Incluye dos producciones de fotos/video, más piezas para redes, reels, historias, descripciones, hashtags y contenido organizado para todo el mes.
+        </p>
+
+        <div class="price">Desde $519.999 <span>ARS</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="detail-section" id="detalle">
+  <div class="wrap">
+    <div class="take"><span class="num">Detalle</span> Lo que hacemos</div>
+
+    <div class="section-title">
+      <h2>Tres áreas, una misma vidriera.</h2>
+      <p>
+        Cada pack combina diseño gráfico, producción audiovisual y community management para que el contenido no quede suelto, sino armado con una intención.
+      </p>
+    </div>
+
+    <div class="service-grid">
+
+      <article class="service-card design">
+        <div class="service-head">
+          <div class="service-number">Área 01</div>
+          <h3>Diseño gráfico</h3>
+          <p>La parte visual que ordena, viste y hace reconocible a tu marca.</p>
+        </div>
+
+        <div class="service-body">
+          <div class="service-block">
+            <h4>Incluye</h4>
+            <ul>
+              <li>Diseño de posteos estáticos para feed.</li>
+              <li>Diseño de historias base para Instagram.</li>
+              <li>Portadas para historias destacadas.</li>
+              <li>Adaptación visual del contenido al estilo de la marca.</li>
+              <li>Armado de piezas listas para publicar.</li>
+              <li>Organización visual para que el perfil se vea más cuidado.</li>
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <h4>Según el pack</h4>
+            <ul>
+              <li>Pack Básico: 4 posteos estáticos, 3 historias y 3 portadas destacadas.</li>
+              <li>Pack PRO: 6 posteos estáticos, 8 historias base y 5 portadas destacadas.</li>
+              <li>Readaptación de logo opcional en Pack PRO con costo extra.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card camera">
+        <div class="service-head">
+          <div class="service-number">Área 02</div>
+          <h3>Cámara, filmmaker & fotografía</h3>
+          <p>La producción de material propio para que tu contenido deje de parecer genérico.</p>
+        </div>
+
+        <div class="service-body">
+          <div class="service-block">
+            <h4>Incluye</h4>
+            <ul>
+              <li>Producción de fotos y videos para redes.</li>
+              <li>Grabación de material vertical para reels e historias.</li>
+              <li>Tomas de producto, espacio, servicio, proceso o equipo.</li>
+              <li>Dirección visual durante la producción.</li>
+              <li>Selección del material más útil para comunicar.</li>
+              <li>Edición de reels cortos listos para publicar.</li>
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <h4>Según el pack</h4>
+            <ul>
+              <li>Pack Básico: 1 sesión corta de fotos/video de aproximadamente 1 hora.</li>
+              <li>Pack Básico: 2 reels cortos editados.</li>
+              <li>Pack PRO: 2 sesiones de fotos/video.</li>
+              <li>Pack PRO: entre 2 y 5 reels cortos editados.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card cm">
+        <div class="service-head">
+          <div class="service-number">Área 03</div>
+          <h3>Community management</h3>
+          <p>La parte que ordena, acompaña y hace que el contenido tenga continuidad.</p>
+        </div>
+
+        <div class="service-body">
+          <div class="service-block">
+            <h4>Incluye</h4>
+            <ul>
+              <li>Planner de contenido según el pack elegido.</li>
+              <li>Descripciones para posteos y reels.</li>
+              <li>Hashtags pensados para cada pieza.</li>
+              <li>Respuesta a comentarios.</li>
+              <li>Edición de biografía de Instagram.</li>
+              <li>Pie de destacadas.</li>
+              <li>Aviso ante fechas importantes para generar contenido.</li>
+            </ul>
+          </div>
+
+          <div class="service-block">
+            <h4>Según el pack</h4>
+            <ul>
+              <li>Pack Básico: planner quincenal para cubrir 2 semanas.</li>
+              <li>Pack PRO: planner mensual.</li>
+              <li>Pack PRO: entrega mínima desde 2 semanas después de la grabación.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="comparativa">
+  <div class="wrap">
+    <div class="take"><span class="num">Comparativa</span> Qué trae cada pack</div>
+
+    <div class="compare-grid">
+
+      <article class="compare-card">
+        <div class="compare-kicker">PACK 01 / 2 semanas</div>
+        <h3>Pack Visual Básico</h3>
+
+        <ul class="compare-list">
+          <li>1 sesión de fotos/video de contenido, aproximadamente 1 hora.</li>
+          <li>4 posteos estáticos.</li>
+          <li>3 historias.</li>
+          <li>3 portadas destacadas.</li>
+          <li>2 reels cortos editados.</li>
+          <li>Planner quincenal.</li>
+          <li>Respuestas a comentarios.</li>
+          <li>Copys y hashtags en tendencia.</li>
+          <li>Pie de destacadas.</li>
+          <li>Edición de biografía.</li>
+          <li>Aviso ante fechas importantes para generar contenido.</li>
+        </ul>
+
+        <div class="price">Desde $379.999 <span>ARS</span></div>
+      </article>
+
+      <article class="compare-card pro">
+        <div class="compare-kicker">PACK 02 / 1 mes</div>
+        <h3>Pack Visual PRO</h3>
+
+        <ul class="compare-list">
+          <li>2 sesiones de fotos/video de contenido.</li>
+          <li>6 posteos estáticos.</li>
+          <li>8 historias base.</li>
+          <li>5 portadas destacadas.</li>
+          <li>2 a 5 reels cortos editados.</li>
+          <li>Planner mensual.</li>
+          <li>Respuestas a comentarios.</li>
+          <li>Copys y hashtags en tendencia.</li>
+          <li>Pie de destacadas.</li>
+          <li>Edición de biografía.</li>
+          <li>Aviso ante fechas importantes para generar contenido.</li>
+          <li>Posibilidad de readaptación de logo con costo extra.</li>
+          <li>Entrega desde 2 semanas después de la grabación.</li>
+        </ul>
+
+        <div class="price">Desde $519.999 <span>ARS</span></div>
+      </article>
+
+    </div>
+
+    <div class="note-box">
+      <p>
+        Cada marca tiene necesidades distintas. Por eso estos packs pueden adaptarse o convertirse en una propuesta hecha a medida.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="wrap">
+    <div class="take"><span class="num">Siguiente paso</span> Reunión</div>
+
+    <h2>¿Vemos cuál de estos packs tiene más sentido para tu marca?</h2>
+
+    <p>
+      Podemos charlar 15 minutos, entender qué necesitás y definir si conviene partir de un pack base o armar una propuesta personalizada.
+    </p>
+
+    <a href="https://calendar.app.google/KosPR8R6xLLSoZWm9" class="btn btn-main">Agendar reunión</a>
+
+    <div class="footer-line">
+      <span>3D3.STUDIO - @3d3.studio</span>
+      <span>CABA</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -28,17 +28,12 @@
   <style>
     :root {
       --violeta: #4b1c71;
-      --violeta-oscuro: #35104f;
-
-      --beige: #c9ad8c;
-
-      --marron: #59331f;
-      --marron-claro: #805638;
-
       --rosa: #eaa7ba;
-      --rosa-hover: #f0b6c5;
-
-      --crema: #fff6ec;
+      --rosa-hover: #f0b7c6;
+      --crema: #fff8f2;
+      --crema-tarjeta: #fff3ec;
+      --marron: #8c6239;
+      --marron-oscuro: #4d3028;
     }
 
     * {
@@ -53,14 +48,28 @@
 
     body {
       min-height: 100vh;
-      color: var(--marron);
-      background: var(--violeta);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(234, 167, 186, 0.28) 0%,
+          transparent 35%
+        ),
+        linear-gradient(
+          315deg,
+          rgba(75, 28, 113, 0.12) 0%,
+          transparent 38%
+        ),
+        var(--crema);
+
+      color: var(--violeta);
       font-family: "Montserrat", sans-serif;
+      overflow-x: hidden;
     }
 
     .catalogo {
       min-height: 100vh;
-      padding: 52px 24px;
+      padding: 40px 24px;
 
       display: flex;
       align-items: center;
@@ -68,20 +77,22 @@
     }
 
     .tarjeta {
-      position: relative;
-
-      width: min(100%, 860px);
-      padding: clamp(52px, 8vw, 90px);
+      width: min(100%, 760px);
+      padding: clamp(48px, 8vw, 80px);
 
       text-align: center;
 
-      background: var(--beige);
-      border: 1px solid rgba(53, 16, 79, 0.3);
-      border-radius: 12px;
+      background: rgba(255, 243, 236, 0.94);
+
+      border: 1px solid rgba(75, 28, 113, 0.14);
+      border-radius: 28px;
 
       box-shadow:
-        18px 18px 0 var(--violeta-oscuro),
-        0 30px 70px rgba(20, 4, 31, 0.3);
+        0 30px 80px rgba(75, 28, 113, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .etiqueta {
@@ -89,74 +100,74 @@
       align-items: center;
       justify-content: center;
 
-      margin-bottom: 30px;
-      padding: 11px 19px;
+      margin-bottom: 27px;
+      padding: 11px 18px;
 
       color: var(--crema);
       background: var(--violeta);
 
+      border-radius: 6px;
+
       font-family: "Courier New", monospace;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       line-height: 1;
       text-transform: uppercase;
     }
 
     h1 {
-      max-width: 680px;
-      margin: 0 auto 25px;
+      max-width: 620px;
+      margin: 0 auto 22px;
 
-      color: var(--marron);
+      color: var(--violeta);
 
       font-family: "Literata", serif;
-      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-size: clamp(2.6rem, 8vw, 5rem);
       font-weight: 600;
       line-height: 0.98;
       letter-spacing: -0.055em;
     }
 
     h1 span {
-      color: var(--violeta);
+      color: var(--rosa);
     }
 
     .descripcion {
-      max-width: 590px;
+      max-width: 560px;
       margin: 0 auto;
 
-      color: var(--marron-claro);
+      color: rgba(75, 28, 113, 0.78);
 
-      font-family: "Literata", serif;
-      font-size: clamp(1rem, 2vw, 1.17rem);
-      line-height: 1.75;
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
+      line-height: 1.7;
     }
 
     .acciones {
-      margin-top: 38px;
+      margin-top: 35px;
 
       display: flex;
-      align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 14px;
     }
 
     .boton {
-      min-width: 230px;
+      min-width: 220px;
       min-height: 62px;
-      padding: 17px 28px;
+      padding: 16px 28px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
       border: 1px solid var(--violeta);
-      border-radius: 8px;
+      border-radius: 9px;
 
       font-family: "Courier New", monospace;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.1em;
       line-height: 1;
       text-align: center;
       text-decoration: none;
@@ -171,12 +182,12 @@
     }
 
     .boton-principal {
-      color: var(--marron);
+      color: var(--marron-oscuro);
       background: var(--rosa);
       border-color: var(--rosa);
 
       box-shadow:
-        0 10px 22px rgba(75, 28, 113, 0.15);
+        0 10px 22px rgba(75, 28, 113, 0.14);
     }
 
     .boton-secundario {
@@ -193,7 +204,7 @@
       border-color: var(--rosa-hover);
 
       box-shadow:
-        0 14px 28px rgba(75, 28, 113, 0.2);
+        0 14px 28px rgba(75, 28, 113, 0.19);
     }
 
     .boton-secundario:hover {
@@ -202,41 +213,37 @@
     }
 
     .boton:focus-visible {
-      outline: 3px solid var(--rosa);
+      outline: 3px solid rgba(234, 167, 186, 0.75);
       outline-offset: 4px;
     }
 
     .firma {
-      margin-top: 46px;
+      margin-top: 42px;
 
       color: var(--marron);
 
       font-family: "Literata", serif;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       font-style: italic;
       line-height: 1.5;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 540px) {
       .catalogo {
-        padding: 28px 17px;
+        padding: 20px 16px;
       }
 
       .tarjeta {
-        padding: 54px 22px;
-        border-radius: 8px;
-
-        box-shadow:
-          9px 9px 0 var(--violeta-oscuro),
-          0 20px 45px rgba(20, 4, 31, 0.25);
+        padding: 48px 22px;
+        border-radius: 22px;
       }
 
       h1 {
         font-size: clamp(2.45rem, 13vw, 3.8rem);
       }
 
-      .descripcion {
-        font-size: 1rem;
+      .descripcion br {
+        display: none;
       }
 
       .acciones {
@@ -246,10 +253,6 @@
       .boton {
         width: 100%;
         min-width: 0;
-      }
-
-      .firma {
-        margin-top: 36px;
       }
     }
   </style>
@@ -262,7 +265,7 @@
     <section class="tarjeta">
 
       <div class="etiqueta">
-        Catálogo en proceso
+        Estamos trabajando
       </div>
 
       <h1>
@@ -273,7 +276,8 @@
       <p class="descripcion">
         Estamos terminando de ordenar todos nuestros servicios para que
         puedas conocerlos sin vueltas y encontrar lo que mejor encaje con
-        tu marca. Muy pronto vas a poder verlo completo.
+        tu marca.<br>
+        Muy pronto vas a poder verlo completo.
       </p>
 
       <div class="acciones">

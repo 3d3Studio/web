@@ -26,12 +26,18 @@
   <style>
     :root {
       --violeta: #4b1c71;
-      --rosa: #eaa7ba;
-      --rosa-claro: #f6dce4;
-      --crema: #fff8f2;
-      --marron: #4c3029;
-      --marron-claro: #8c6239;
-      --blanco: #ffffff;
+      --violeta-oscuro: #35104f;
+
+      --beige: #c9ad8c;
+      --beige-claro: #d8c0a3;
+
+      --marron: #59331f;
+      --marron-claro: #805638;
+
+      --rosa: #d95696;
+      --rosa-hover: #e66faa;
+
+      --crema: #fff6ec;
     }
 
     * {
@@ -46,27 +52,14 @@
 
     body {
       min-height: 100vh;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(234, 167, 186, 0.22),
-          transparent 38%
-        ),
-        linear-gradient(
-          315deg,
-          rgba(75, 28, 113, 0.1),
-          transparent 40%
-        ),
-        var(--crema);
-
-      color: var(--violeta);
+      color: var(--marron);
+      background: var(--violeta);
       font-family: "Montserrat", sans-serif;
     }
 
     .catalogo {
       min-height: 100vh;
-      padding: 40px 24px;
+      padding: 52px 24px;
 
       display: flex;
       align-items: center;
@@ -74,21 +67,32 @@
     }
 
     .tarjeta {
-      width: min(100%, 800px);
-      padding: clamp(48px, 8vw, 82px);
+      position: relative;
+      width: min(100%, 860px);
+      padding: clamp(52px, 8vw, 90px);
+      overflow: hidden;
+
       text-align: center;
 
-      background: rgba(255, 255, 255, 0.75);
-
-      border: 1px solid rgba(75, 28, 113, 0.12);
-      border-radius: 28px;
+      background: var(--beige);
+      border: 1px solid rgba(53, 16, 79, 0.3);
+      border-radius: 12px;
 
       box-shadow:
-        0 30px 75px rgba(75, 28, 113, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        18px 18px 0 var(--violeta-oscuro),
+        0 30px 70px rgba(20, 4, 31, 0.3);
+    }
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    .tarjeta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 13px;
+
+      background: var(--rosa);
     }
 
     .etiqueta {
@@ -96,24 +100,25 @@
       align-items: center;
       justify-content: center;
 
-      margin-bottom: 28px;
-      padding: 11px 20px;
+      margin-bottom: 30px;
+      padding: 10px 17px;
 
-      color: var(--violeta);
-      background: var(--rosa-claro);
-      border-radius: 8px;
+      color: var(--crema);
+      background: var(--violeta);
 
       font-family: "Courier New", monospace;
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.12em;
       line-height: 1;
       text-transform: uppercase;
     }
 
     h1 {
-      max-width: 660px;
-      margin: 0 auto 24px;
+      max-width: 680px;
+      margin: 0 auto 25px;
+
+      color: var(--marron);
 
       font-family: "Literata", serif;
       font-size: clamp(2.8rem, 7vw, 5.2rem);
@@ -123,15 +128,17 @@
     }
 
     h1 span {
-      color: var(--rosa);
+      color: var(--violeta);
     }
 
     .descripcion {
       max-width: 590px;
       margin: 0 auto;
 
-      color: rgba(75, 28, 113, 0.78);
-      font-size: clamp(1rem, 2vw, 1.16rem);
+      color: var(--marron-claro);
+
+      font-family: "Literata", serif;
+      font-size: clamp(1rem, 2vw, 1.17rem);
       line-height: 1.75;
     }
 
@@ -146,7 +153,7 @@
     }
 
     .boton {
-      min-width: 220px;
+      min-width: 230px;
       min-height: 62px;
       padding: 17px 28px;
 
@@ -154,13 +161,13 @@
       align-items: center;
       justify-content: center;
 
-      border: 2px solid var(--rosa);
-      border-radius: 10px;
+      border: 1px solid var(--violeta);
+      border-radius: 8px;
 
       font-family: "Courier New", monospace;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.11em;
       line-height: 1;
       text-align: center;
       text-decoration: none;
@@ -176,13 +183,13 @@
     .boton-principal {
       color: var(--marron);
       background: var(--rosa);
+      border-color: var(--rosa);
 
-      box-shadow:
-        0 12px 25px rgba(75, 28, 113, 0.12);
+      box-shadow: 7px 7px 0 var(--violeta);
     }
 
     .boton-secundario {
-      color: var(--marron);
+      color: var(--violeta);
       background: transparent;
     }
 
@@ -191,25 +198,26 @@
     }
 
     .boton-principal:hover {
-      background: #f0b5c5;
+      background: var(--rosa-hover);
+      border-color: var(--rosa-hover);
 
-      box-shadow:
-        0 17px 32px rgba(75, 28, 113, 0.17);
+      box-shadow: 9px 9px 0 var(--violeta);
     }
 
     .boton-secundario:hover {
-      background: var(--rosa);
+      color: var(--crema);
+      background: var(--violeta);
     }
 
     .boton:focus-visible {
-      outline: 3px solid rgba(75, 28, 113, 0.3);
+      outline: 3px solid var(--rosa);
       outline-offset: 4px;
     }
 
     .firma {
-      margin-top: 42px;
+      margin-top: 46px;
 
-      color: var(--marron-claro);
+      color: var(--marron);
       font-family: "Literata", serif;
       font-size: 0.96rem;
       font-style: italic;
@@ -218,20 +226,20 @@
 
     @media (max-width: 600px) {
       .catalogo {
-        padding: 20px 16px;
+        padding: 28px 17px;
       }
 
       .tarjeta {
-        padding: 48px 22px;
-        border-radius: 20px;
+        padding: 54px 22px;
+        border-radius: 8px;
+
+        box-shadow:
+          9px 9px 0 var(--violeta-oscuro),
+          0 20px 45px rgba(20, 4, 31, 0.25);
       }
 
       h1 {
-        font-size: clamp(2.5rem, 13vw, 3.8rem);
-      }
-
-      .descripcion br {
-        display: none;
+        font-size: clamp(2.45rem, 13vw, 3.8rem);
       }
 
       .acciones {
@@ -244,7 +252,7 @@
       }
 
       .firma {
-        margin-top: 34px;
+        margin-top: 36px;
       }
     }
   </style>
@@ -257,7 +265,7 @@
     <section class="tarjeta">
 
       <div class="etiqueta">
-        Estamos trabajando
+        Catálogo en proceso
       </div>
 
       <h1>

@@ -1,27 +1,1752 @@
-.area-card {
-  min-height: 100%;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
 
-  display: flex;
-  flex-direction: column;
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  overflow: hidden;
+  <title>3D3.studio - Packs de contenido</title>
 
-  border: none;
-  border-radius: 23px;
+  <link rel="icon" type="image/png" href="./favicon.png?v=3">
+  <link rel="shortcut icon" type="image/png" href="./favicon.png?v=3">
 
-  box-shadow:
-    0 18px 38px rgba(42, 27, 16, 0.18),
-    0 6px 14px rgba(75, 28, 113, 0.10);
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Literata:opsz,wght@18..144,400;18..144,500;18..144,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-.area-card:hover {
-  transform: translateY(-5px);
+  <style>
+    :root {
+      --paper: #C4AB8C;
+      --paper-dim: #B89A78;
 
-  box-shadow:
-    0 26px 52px rgba(42, 27, 16, 0.23),
-    0 10px 20px rgba(75, 28, 113, 0.14);
-}
+      --ink: #4E3420;
+      --ink-soft: #745137;
+
+      --charcoal: #4B1C71;
+      --charcoal-dark: #35104F;
+
+      --cream: #F4EFE4;
+
+      --signal: #BA83C9;
+      --signal-hover: #C897D5;
+
+      --btn: #EEB1BB;
+      --btn-hover: #F3C2CA;
+      --btn-dark: #D98A99;
+      --btn-dark-hover: #E39AAA;
+
+      --line-dark: rgba(42, 27, 16, 0.18);
+      --line-light: rgba(244, 239, 228, 0.22);
+
+      --shadow-soft:
+        0 12px 28px rgba(42, 27, 16, 0.12);
+
+      --shadow-card:
+        0 18px 42px rgba(42, 27, 16, 0.16);
+
+      --display: "Playfair Display", serif;
+      --body: "Literata", serif;
+      --mono: "IBM Plex Mono", monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+
+      color: var(--ink);
+      background: var(--paper);
+
+      font-family: var(--body);
+      font-size: 16px;
+
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    /* ETIQUETAS */
+
+    .take {
+      margin-bottom: 20px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: var(--ink-soft);
+
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .take .num {
+      padding: 6px 11px;
+
+      color: var(--cream);
+      background: var(--charcoal);
+
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* BOTONES */
+
+    .btn {
+      min-height: 56px;
+      padding: 16px 27px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      border: 1px solid currentColor;
+      border-radius: 8px;
+
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.18s ease,
+        background-color 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        opacity 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: translateY(-1px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--signal);
+      outline-offset: 4px;
+    }
+
+    .btn-main {
+      color: var(--ink);
+      background: var(--btn);
+      border-color: var(--btn);
+
+      box-shadow:
+        0 11px 25px rgba(42, 27, 16, 0.15);
+    }
+
+    .btn-main:hover {
+      background: var(--btn-hover);
+      border-color: var(--btn-hover);
+
+      box-shadow:
+        0 15px 32px rgba(42, 27, 16, 0.2);
+    }
+
+    .btn-dark {
+      color: var(--cream);
+      background: var(--charcoal);
+      border-color: var(--charcoal);
+
+      box-shadow:
+        0 11px 25px rgba(42, 27, 16, 0.16);
+    }
+
+    .btn-dark:hover {
+      background: var(--charcoal-dark);
+      border-color: var(--charcoal-dark);
+
+      box-shadow:
+        0 15px 32px rgba(42, 27, 16, 0.22);
+    }
+
+    .btn-outline {
+      color: var(--ink);
+      background: transparent;
+      border-color: var(--ink);
+    }
+
+    .btn-outline:hover {
+      color: var(--cream);
+      background: var(--ink);
+
+      box-shadow:
+        0 12px 26px rgba(42, 27, 16, 0.18);
+    }
+
+    /* HEADER */
+
+    .site-head {
+      padding: 25px 0;
+
+      background: var(--paper);
+      border-bottom: 1px solid var(--line-dark);
+    }
+
+    .site-head .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo-mark {
+      color: var(--ink);
+
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.2;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 76px 0 68px;
+
+      background:
+        radial-gradient(
+          circle at 88% 18%,
+          rgba(186, 131, 201, 0.27),
+          transparent 29%
+        ),
+        var(--paper);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: end;
+      gap: 42px;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+
+      font-family: var(--display);
+      font-size: clamp(46px, 6.8vw, 78px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 0.94;
+    }
+
+    .hero h1 em {
+      color: var(--charcoal);
+      font-style: normal;
+    }
+
+    .hero-text {
+      max-width: 720px;
+      margin-top: 28px;
+
+      color: var(--ink-soft);
+
+      font-size: clamp(18px, 1.8vw, 20px);
+      line-height: 1.58;
+    }
+
+    .hero-actions {
+      margin-top: 36px;
+
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-card {
+      min-height: 310px;
+      padding: 32px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      color: var(--cream);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(186, 131, 201, 0.12),
+          transparent 44%
+        ),
+        var(--charcoal);
+
+      border: 1px solid rgba(244, 239, 228, 0.12);
+      border-radius: 24px;
+
+      box-shadow: var(--shadow-card);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 24px 50px rgba(42, 27, 16, 0.21);
+    }
+
+    .hero-card-top {
+      color: rgba(244, 239, 228, 0.58);
+
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .hero-card p {
+      color: rgba(244, 239, 228, 0.84);
+
+      font-size: clamp(18px, 1.8vw, 20px);
+      line-height: 1.48;
+    }
+
+    .hero-card strong {
+      color: var(--signal);
+      font-weight: 600;
+    }
+
+    /* TÍTULOS */
+
+    .section-title {
+      max-width: 1020px;
+      margin-bottom: 44px;
+    }
+
+    .section-title h2 {
+      max-width: 960px;
+      margin-bottom: 20px;
+
+      font-family: var(--display);
+      font-size: clamp(38px, 4.8vw, 56px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+    }
+
+    .section-title p {
+      max-width: 940px;
+
+      color: var(--ink-soft);
+
+      font-size: clamp(17px, 1.8vw, 19px);
+      line-height: 1.62;
+    }
+
+    /* PACKS DESARROLLADOS */
+
+    .pack-page-section {
+      padding: 88px 0;
+    }
+
+    .pack-showcase {
+      position: relative;
+
+      min-height: 550px;
+      margin-bottom: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      isolation: isolate;
+      overflow: hidden;
+
+      border: 1px solid var(--line-dark);
+      border-radius: 30px;
+
+      box-shadow: var(--shadow-card);
+    }
+
+    .pack-showcase.basic {
+      background: var(--paper);
+    }
+
+    .pack-showcase.pro {
+      background: var(--charcoal);
+    }
+
+    .pack-shapes {
+      position: absolute;
+      inset: 0;
+
+      z-index: 0;
+
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+
+      width: 310px;
+      height: 145px;
+
+      display: block;
+
+      border: 23px solid var(--btn);
+      border-radius: 999px;
+
+      opacity: 0.86;
+    }
+
+    .shape-1 {
+      top: 34px;
+      left: -70px;
+
+      border-color: var(--charcoal);
+
+      transform: rotate(28deg);
+    }
+
+    .shape-2 {
+      top: 80px;
+      right: -76px;
+
+      border-color: var(--btn);
+
+      transform: rotate(-18deg);
+    }
+
+    .shape-3 {
+      bottom: 36px;
+      left: 12%;
+
+      border-color: var(--ink);
+
+      transform: rotate(-32deg);
+    }
+
+    .shape-4 {
+      right: 16%;
+      bottom: 80px;
+
+      border-color: var(--signal);
+
+      transform: rotate(22deg);
+    }
+
+    .shape-5 {
+      top: 42%;
+      left: 42%;
+
+      border-color: var(--paper-dim);
+
+      transform: rotate(12deg);
+    }
+
+    .pack-showcase.pro .shape-1 {
+      border-color: var(--btn);
+    }
+
+    .pack-showcase.pro .shape-2 {
+      border-color: var(--paper);
+    }
+
+    .pack-showcase.pro .shape-3 {
+      border-color: var(--ink);
+    }
+
+    .pack-showcase.pro .shape-4 {
+      border-color: var(--signal);
+    }
+
+    .pack-showcase.pro .shape-5 {
+      border-color: var(--btn-dark);
+    }
+
+    .pack-panel {
+      position: relative;
+
+      z-index: 1;
+
+      width: min(92%, 640px);
+      padding: 44px 40px;
+
+      color: var(--ink);
+      background: rgba(238, 177, 187, 0.93);
+
+      border: 1px solid rgba(78, 52, 32, 0.14);
+      border-radius: 27px;
+
+      box-shadow:
+        0 20px 44px rgba(42, 27, 16, 0.19);
+
+      text-align: center;
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .pack-panel:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 26px 52px rgba(42, 27, 16, 0.23);
+    }
+
+    .pack-showcase.pro .pack-panel {
+      background: rgba(186, 131, 201, 0.94);
+    }
+
+    .pack-kicker {
+      margin-bottom: 18px;
+
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .pack-name {
+      margin-bottom: 20px;
+
+      font-family: var(--display);
+      font-size: clamp(46px, 5.5vw, 68px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 0.92;
+    }
+
+    .pack-subtitle {
+      margin-bottom: 25px;
+
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .pack-intro {
+      max-width: 550px;
+      margin: 0 auto 28px;
+
+      font-size: clamp(18px, 1.8vw, 20px);
+      line-height: 1.55;
+    }
+
+    .price {
+      margin-bottom: 29px;
+
+      font-family: var(--display);
+      font-size: clamp(43px, 4.8vw, 60px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+    }
+
+    .price span {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* DESGLOSE */
+
+    .pack-breakdown {
+      margin-bottom: 54px;
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .break-card {
+      min-height: 100%;
+      padding: 31px 28px;
+
+      border: 1px solid rgba(78, 52, 32, 0.18);
+      border-radius: 23px;
+
+      box-shadow: var(--shadow-soft);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .break-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 18px 36px rgba(42, 27, 16, 0.17);
+    }
+
+    .break-card.design {
+      background: var(--paper-dim);
+    }
+
+    .break-card.camera {
+      background: var(--signal);
+    }
+
+    .break-card.cm {
+      background: var(--btn-dark);
+    }
+
+    .break-card h3 {
+      margin-bottom: 22px;
+
+      color: var(--ink);
+
+      font-family: var(--display);
+      font-size: clamp(31px, 3vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 1;
+    }
+
+    .break-card ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      list-style: none;
+    }
+
+    .break-card li {
+      position: relative;
+
+      padding-left: 22px;
+
+      color: var(--ink);
+
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .break-card li::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      color: var(--charcoal);
+
+      font-family: var(--mono);
+      font-weight: 700;
+
+      content: "+";
+    }
+
+    /* ÁREAS */
+
+    .areas-section {
+      background: var(--paper-dim);
+    }
+
+    .areas-section .section-title {
+      max-width: 1060px;
+    }
+
+    .areas-section .section-title h2 {
+      max-width: 1020px;
+    }
+
+    .areas-section .section-title p {
+      max-width: 1020px;
+    }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .area-card {
+      min-height: 100%;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(78, 52, 32, 0.17);
+      border-radius: 23px;
+
+      box-shadow: var(--shadow-card);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .area-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 24px 48px rgba(42, 27, 16, 0.2);
+    }
+
+    .area-head {
+      min-height: 235px;
+      padding: 27px 27px 25px;
+    }
+
+    .area-number {
+      margin-bottom: 18px;
+
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .area-card h3 {
+      margin-bottom: 16px;
+
+      font-family: var(--display);
+      font-size: clamp(31px, 3.1vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.95;
+    }
+
+    .area-head p {
+      max-width: 340px;
+
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .area-body {
+      flex: 1;
+
+      padding: 27px 27px 31px;
+    }
+
+    .area-body ul {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+
+      list-style: none;
+    }
+
+    .area-body li {
+      position: relative;
+
+      padding-left: 19px;
+
+      color: var(--ink);
+
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+
+    .area-body li::before {
+      position: absolute;
+      top: 0.58em;
+      left: 0;
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      content: "";
+    }
+
+    .area-card.design .area-head {
+      color: var(--cream);
+      background: var(--ink);
+    }
+
+    .area-card.design .area-number,
+    .area-card.design .area-head p {
+      color: rgba(244, 239, 228, 0.78);
+    }
+
+    .area-card.design .area-body {
+      background: var(--paper);
+    }
+
+    .area-card.design .area-body li::before {
+      background: var(--ink);
+    }
+
+    .area-card.camera .area-head {
+      color: var(--cream);
+      background: var(--charcoal);
+    }
+
+    .area-card.camera .area-number,
+    .area-card.camera .area-head p {
+      color: rgba(244, 239, 228, 0.78);
+    }
+
+    .area-card.camera .area-body {
+      background: var(--signal);
+    }
+
+    .area-card.camera .area-body li::before {
+      background: var(--charcoal);
+    }
+
+    .area-card.cm .area-head {
+      color: var(--cream);
+      background: var(--btn-dark);
+    }
+
+    .area-card.cm .area-head h3,
+    .area-card.cm .area-number,
+    .area-card.cm .area-head p {
+      color: var(--cream);
+    }
+
+    .area-card.cm .area-body {
+      background: var(--btn);
+    }
+
+    .area-card.cm .area-body li::before {
+      background: var(--charcoal);
+    }
+
+    /* CATÁLOGO */
+
+    .catalog-section {
+      background: var(--paper);
+    }
+
+    .catalog-line {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: stretch;
+      gap: 26px;
+    }
+
+    .catalog-text,
+    .pdf-card {
+      min-height: 300px;
+      padding: 34px;
+
+      border-radius: 24px;
+
+      box-shadow: var(--shadow-card);
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .catalog-text:hover,
+    .pdf-card:hover {
+      transform: translateY(-4px);
+
+      box-shadow:
+        0 24px 48px rgba(42, 27, 16, 0.2);
+    }
+
+    .catalog-text {
+      background: rgba(244, 239, 228, 0.23);
+      border: 1px solid rgba(78, 52, 32, 0.16);
+    }
+
+    .catalog-text h2 {
+      max-width: 620px;
+      margin-bottom: 19px;
+
+      font-family: var(--display);
+      font-size: clamp(36px, 4.5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+    }
+
+    .catalog-text p {
+      max-width: 700px;
+
+      color: var(--ink-soft);
+
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .pdf-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      color: var(--cream);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(186, 131, 201, 0.13),
+          transparent 45%
+        ),
+        var(--charcoal);
+
+      border: 1px solid rgba(244, 239, 228, 0.12);
+    }
+
+    .pdf-label {
+      color: rgba(244, 239, 228, 0.56);
+
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+
+    .pdf-card h3 {
+      margin: 26px 0 17px;
+
+      font-family: var(--display);
+      font-size: clamp(35px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      line-height: 0.98;
+    }
+
+    .pdf-card p {
+      margin-bottom: 29px;
+
+      color: rgba(244, 239, 228, 0.78);
+
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .pdf-card .btn {
+      align-self: flex-start;
+    }
+
+    /* CTA FINAL */
+
+    .cta {
+      color: var(--cream);
+      background: var(--charcoal);
+    }
+
+    .cta .take {
+      color: rgba(244, 239, 228, 0.6);
+    }
+
+    .cta .take .num {
+      color: var(--charcoal);
+      background: var(--paper);
+    }
+
+    .cta h2 {
+      max-width: 800px;
+      margin-bottom: 23px;
+
+      color: var(--cream);
+
+      font-family: var(--display);
+      font-size: clamp(39px, 5vw, 58px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin-bottom: 35px;
+
+      color: rgba(244, 239, 228, 0.74);
+
+      font-size: 18px;
+      line-height: 1.58;
+    }
+
+    .footer-line {
+      margin-top: 72px;
+      padding-top: 17px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+
+      border-top: 1px solid var(--line-light);
+
+      color: rgba(244, 239, 228, 0.38);
+
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      line-height: 1.3;
+    }
+
+    .footer-logo {
+      width: auto;
+      height: 34px;
+
+      display: block;
+      object-fit: contain;
+
+      filter:
+        drop-shadow(0 0 6px rgba(244, 239, 228, 0.45));
+    }
+
+    /* TABLET */
+
+    @media (max-width: 980px) {
+      .hero-layout,
+      .pack-breakdown,
+      .areas-grid,
+      .catalog-line {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 240px;
+      }
+
+      .area-head {
+        min-height: auto;
+      }
+
+      .area-head p {
+        max-width: 100%;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 640px) {
+      section,
+      .pack-page-section {
+        padding: 62px 0;
+      }
+
+      .wrap {
+        padding: 0 19px;
+      }
+
+      .site-head {
+        padding: 20px 0;
+      }
+
+      .site-head .wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .site-head .btn {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 58px 0 56px;
+      }
+
+      .hero-layout {
+        gap: 34px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 12vw, 58px);
+      }
+
+      .hero-text,
+      .hero-card p {
+        font-size: 18px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-card {
+        padding: 27px;
+        border-radius: 20px;
+      }
+
+      .section-title {
+        margin-bottom: 38px;
+      }
+
+      .section-title h2,
+      .areas-section .section-title h2,
+      .catalog-text h2,
+      .cta h2 {
+        font-size: clamp(36px, 10vw, 44px);
+      }
+
+      .section-title p,
+      .areas-section .section-title p,
+      .catalog-text p,
+      .pdf-card p,
+      .cta p {
+        font-size: 17px;
+      }
+
+      .pack-showcase {
+        min-height: 500px;
+        border-radius: 24px;
+      }
+
+      .pack-panel {
+        padding: 34px 25px;
+        border-radius: 22px;
+      }
+
+      .pack-name {
+        font-size: clamp(42px, 12vw, 52px);
+      }
+
+      .pack-intro {
+        font-size: 18px;
+      }
+
+      .price {
+        font-size: 44px;
+      }
+
+      .shape {
+        width: 240px;
+        height: 120px;
+
+        border-width: 18px;
+      }
+
+      .break-card {
+        padding: 28px 24px;
+      }
+
+      .break-card h3,
+      .area-card h3 {
+        font-size: 35px;
+      }
+
+      .break-card li,
+      .area-body li {
+        font-size: 16px;
+      }
+
+      .area-head,
+      .area-body,
+      .catalog-text,
+      .pdf-card {
+        padding: 27px 25px;
+      }
+
+      .catalog-text,
+      .pdf-card {
+        min-height: auto;
+      }
+
+      .pdf-card .btn {
+        width: 100%;
+      }
+
+      .footer-line {
+        margin-top: 58px;
+
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .take {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .take .num {
+        font-size: 12px;
+      }
+
+      .pack-panel .btn,
+      .cta .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-head">
+    <div class="wrap">
+
+      <a href="index.html" class="logo-mark">
+        3D3.STUDIO
+      </a>
+
+      <a href="index.html" class="btn btn-outline">
+        Volver al inicio
+      </a>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="wrap">
+
+        <div class="hero-layout">
+
+          <div>
+
+            <div class="take">
+              <span class="num">Packs</span>
+              Contenido para marcas
+            </div>
+
+            <h1>
+              Packs para que tu marca
+              <em>SE VEA MEJOR</em>
+            </h1>
+
+            <p class="hero-text">
+              Diseñamos, producimos y organizamos contenido para que tus
+              redes tengan una presencia más cuidada, más clara y más
+              alineada a lo que querés comunicar.
+            </p>
+
+            <div class="hero-actions">
+
+              <a href="#pack-visual-01" class="btn btn-dark">
+                Ver Pack 01
+              </a>
+
+              <a href="#pack-visual-02" class="btn btn-main">
+                Ver Pack 02
+              </a>
+
+            </div>
+
+          </div>
+
+          <aside class="hero-card">
+
+            <div class="hero-card-top">
+              3D3.STUDIO
+            </div>
+
+            <p>
+              Antes de crear, nos gusta conocer tu marca: qué hacés, cómo
+              hablás y qué querés transmitir.<br>
+              Después pensamos contenido que se vea cuidado, claro y propio.
+            </p>
+
+            <p>
+              <strong>Contenido pensado para vos</strong>
+            </p>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="pack-basico" class="pack-page-section">
+      <div class="wrap">
+
+        <div class="take">
+          <span class="num">Sección 01</span>
+          Packs desarrollados
+        </div>
+
+        <div class="section-title">
+
+          <h2>
+            Elegí el ritmo. Nosotras armamos el contenido.
+          </h2>
+
+          <p>
+            Estos packs son una base para ordenar la producción de
+            contenido según lo que necesita tu marca: una tanda quincenal
+            o una propuesta mensual más completa.
+          </p>
+
+        </div>
+
+        <article class="pack-showcase basic" id="pack-visual-01">
+
+          <div class="pack-shapes" aria-hidden="true">
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+            <span class="shape shape-3"></span>
+            <span class="shape shape-4"></span>
+            <span class="shape shape-5"></span>
+          </div>
+
+          <div class="pack-panel">
+
+            <div class="pack-kicker">
+              PACK 01
+            </div>
+
+            <h2 class="pack-name">
+              Pack Hacerse Ver
+            </h2>
+
+            <div class="pack-subtitle">
+              Contenido pensado para 2 semanas
+            </div>
+
+            <p class="pack-intro">
+              Para marcas que quieren empezar a ordenar sus redes con
+              contenido propio, cuidado y listo para publicar.
+            </p>
+
+            <div class="price">
+              $379.999 <span>ARS</span>
+            </div>
+
+            <a href="#contacto" class="btn btn-dark">
+              Quiero este pack
+            </a>
+
+          </div>
+
+        </article>
+
+        <div class="pack-breakdown">
+
+          <div class="break-card design">
+
+            <h3>Diseño gráfico</h3>
+
+            <ul>
+              <li>4 posteos carrousel o estáticos(dependiendo lo que se considere).</li>
+              <li>3 historias.</li>
+              <li>3 portadas para historias destacadas.</li>
+              <li>Piezas listas para publicar.</li>
+            </ul>
+
+          </div>
+
+          <div class="break-card camera">
+
+            <h3>Fotografía / videos</h3>
+
+            <ul>
+              <li>1 sesión de fotos/video de contenido.</li>
+              <li>Duración aproximada de 1:30 hora.</li>
+              <li>Material visual PROPIO para redes.</li>
+              <li>Grabación de recursos para historias y reels.</li>
+              <li>2 reels cortos listos para subir.</li>
+            </ul>
+
+          </div>
+
+          <div class="break-card cm">
+
+            <h3>Community management</h3>
+
+            <ul>
+              <li>Planner quincenal.</li>
+              <li>Descripciones para posteos y reels.</li>
+              <li>Hashtags en tendencia.</li>
+              <li>Respuestas a comentarios.</li>
+              <li>Edición de biografía.</li>
+              <li>Aviso ante fechas importantes para generar contenido.</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section id="pack-pro" class="pack-page-section">
+      <div class="wrap">
+
+        <article class="pack-showcase pro" id="pack-visual-02">
+
+          <div class="pack-shapes" aria-hidden="true">
+            <span class="shape shape-1"></span>
+            <span class="shape shape-2"></span>
+            <span class="shape shape-3"></span>
+            <span class="shape shape-4"></span>
+            <span class="shape shape-5"></span>
+          </div>
+
+          <div class="pack-panel">
+
+            <div class="pack-kicker">
+              PACK 02
+            </div>
+
+            <h2 class="pack-name">
+              Pack Temporada Completa
+            </h2>
+
+            <div class="pack-subtitle">
+              Contenido pensado para 1 mes
+            </div>
+
+            <p class="pack-intro">
+              Para marcas que quieren sostener una presencia más constante
+              en redes, con más variedad visual y una propuesta mensual de
+              contenido.
+            </p>
+
+            <div class="price">
+              $519.999 <span>ARS</span>
+            </div>
+
+            <a href="#contacto" class="btn btn-main">
+              Quiero este pack
+            </a>
+
+          </div>
+
+        </article>
+
+        <div class="pack-breakdown">
+
+          <div class="break-card design">
+
+            <h3>Diseño gráfico</h3>
+
+            <ul>
+              <li>6 posteos carrousel o estáticos(dependiendo lo que se considere).</li>
+              <li>8 historias base para Instagram.</li>
+              <li>5 portadas destacadas.</li>
+              <li>Posibilidad de readaptación de logo con costo extra.</li>
+            </ul>
+
+          </div>
+
+          <div class="break-card camera">
+
+            <h3>Fotografía / videos</h3>
+
+            <ul>
+              <li>2 sesiones de fotos/video de contenido.</li>
+              <li>Más variedad de material visual para redes.</li>
+              <li>Tomas de producto, proceso, espacio o servicio.</li>
+              <li>Material para sostener el contenido del mes.</li>
+              <li>2 a 5 reels cortos listos para subir.</li>
+            </ul>
+
+          </div>
+
+          <div class="break-card cm">
+
+            <h3>Community management</h3>
+
+            <ul>
+              <li>Planner mensual.</li>
+              <li>Descripciones para posteos y reels.</li>
+              <li>Hashtags en tendencia.</li>
+              <li>Edición de biografía.</li>
+              <li>Respuestas a comentarios</li>
+              <li>Aviso ante fechas importantes para generar contenido.</li>
+              <li>Entrega desde 2 semanas después de la grabación.</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="areas-section" id="areas">
+      <div class="wrap">
+
+        <div class="take">
+          <span class="num">Nuestros servicios</span>
+        </div>
+
+        <div class="section-title">
+
+          <h2>
+            Tres áreas, una misma vidriera.
+          </h2>
+
+          <p>
+            En nuestro estudio trabajamos desde tres áreas que se
+            complementan: diseño gráfico, fotografía / videos y community
+            management. Cada una puede formar parte de un pack o trabajarse
+            de manera individual según lo que necesite tu marca.
+          </p>
+
+        </div>
+
+        <div class="areas-grid">
+
+          <article class="area-card design">
+
+            <div class="area-head">
+
+              <div class="area-number">
+                Área 01
+              </div>
+
+              <h3>Diseño gráfico</h3>
+
+              <p>
+                La parte visual que ordena, viste y hace reconocible a tu marca.
+              </p>
+
+            </div>
+
+            <div class="area-body">
+
+              <ul>
+                <li>Diseño de posteos para feed.</li>
+                <li>Diseño de historias para Instagram.</li>
+                <li>Portadas para historias destacadas.</li>
+                <li>Flyers digitales.</li>
+                <li>Catálogos comerciales.</li>
+                <li>Diseño de piezas para promociones o lanzamientos.</li>
+                <li>Diseño y adaptación de piezas para pauta/publicidad.</li>
+                <li>Diseño de páginas web simples o landing pages.</li>
+                <li>Adaptación visual al estilo de tu marca.</li>
+                <li>Organización estética del perfil.</li>
+                <li>Tarjetas de presentación</li>
+              </ul>
+
+            </div>
+
+          </article>
+
+          <article class="area-card camera">
+
+            <div class="area-head">
+
+              <div class="area-number">
+                Área 02
+              </div>
+
+              <h3>Fotografía / Videos</h3>
+
+              <p>
+                Producción de material propio para que tu contenido no se
+                vea genérico.
+              </p>
+
+            </div>
+
+            <div class="area-body">
+
+              <ul>
+                <li>Producción de fotos para redes.</li>
+                <li>Fotos de tus productos para tienda online/ecommerce.</li>
+                <li>Fotos de servicios, espacios, procesos o equipo.</li>
+                <li>Videos verticales para reels e historias.</li>
+                <li>Videos para publicidad o campañas.</li>
+                <li>Videos para web, YouTube o presentaciones.</li>
+                <li>Grabación de material para contenido mensual.</li>
+                <li>Dirección visual durante la producción.</li>
+                <li>Selección del material más útil para comunicar.</li>
+                <li>Edición de reels y videos cortos.</li>
+              </ul>
+
+            </div>
+
+          </article>
+
+          <article class="area-card cm">
+
+            <div class="area-head">
+
+              <div class="area-number">
+                Área 03
+              </div>
+
+              <h3>Community management</h3>
+
+              <p>
+                La parte que organiza, acompaña y hace que el contenido
+                tenga continuidad.
+              </p>
+
+            </div>
+
+            <div class="area-body">
+
+              <ul>
+                <li>Planner de contenido.</li>
+                <li>Organización mensual o quincenal de publicaciones.</li>
+                <li>Descripciones para posteos y reels.</li>
+                <li>Hashtags pensados para cada pieza.</li>
+                <li>Respuesta a comentarios.</li>
+                <li>Edición de biografía de Instagram.</li>
+                <li>Pie de historias destacadas.</li>
+                <li>Aviso ante fechas importantes.</li>
+                <li>Ideas de contenido según fechas o campañas.</li>
+                <li>Acompañamiento para que la marca mantenga presencia activa.</li>
+              </ul>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="catalog-section" id="servicios-individuales">
+      <div class="wrap">
+
+        <div class="take">
+          <span class="num">Servicios individuales</span>
+        </div>
+
+        <div class="catalog-line">
+
+          <div class="catalog-text">
+
+            <h2>
+              ¿Necesitás algo puntual?
+            </h2>
+
+            <p>
+              Además de los packs, también podemos trabajar piezas o
+              servicios por separado: reels, posteos, historias, sesiones
+              de fotos/video, planner, portadas, edición de bio y otros extras.
+            </p>
+
+          </div>
+
+          <aside class="pdf-card">
+
+            <div>
+
+              <div class="pdf-label">
+                Catálogo PDF
+              </div>
+
+              <h3>
+                Precios unitarios
+              </h3>
+
+              <p>
+                Armamos un catálogo aparte para consultar valores
+                individuales y sumar extras según lo que necesite tu marca.
+              </p>
+
+            </div>
+
+            <a href="./catalogo.html" class="btn btn-main">
+              Ver catálogo
+            </a>
+
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta" id="contacto">
+      <div class="wrap">
+
+        <div class="take">
+          <span class="num">Cierre</span>
+          Siguiente paso
+        </div>
+
+        <h2>
+          ¿Charlamos 15 minutos y vemos qué necesita tu marca?
+        </h2>
+
+        <p>
+          Contanos qué pack te interesa o si necesitás algo más a medida.
+          Lo vemos juntas y pensamos qué opción tiene más sentido.
+        </p>
+
+        <a
+          href="https://calendar.app.google/KosPR8R6xLLSoZWm9"
+          class="btn btn-main"
+        >
+          Agendar reunión
+        </a>
+
+        <div class="footer-line">
+
+          <span>
+            3D3.STUDIO - @3d3.studio
+          </span>
+
+          <img
+            src="Recurso 38.png"
+            alt="Logo 3D3 Studio"
+            class="footer-logo"
+          >
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

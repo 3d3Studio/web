@@ -2,7 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Catálogo en preparación | 3d3 Studio</title>
 
@@ -23,8 +27,10 @@
     :root {
       --violeta: #4b1c71;
       --rosa: #eaa7ba;
+      --rosa-claro: #f6dce4;
       --crema: #fff8f2;
-      --marron: #8c6239;
+      --marron: #4c3029;
+      --marron-claro: #8c6239;
       --blanco: #ffffff;
     }
 
@@ -34,73 +40,52 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       min-height: 100vh;
+
       background:
-        radial-gradient(
-          circle at 15% 20%,
-          rgba(234, 167, 186, 0.42),
-          transparent 34%
+        linear-gradient(
+          135deg,
+          rgba(234, 167, 186, 0.22),
+          transparent 38%
         ),
-        radial-gradient(
-          circle at 85% 80%,
-          rgba(75, 28, 113, 0.18),
-          transparent 35%
+        linear-gradient(
+          315deg,
+          rgba(75, 28, 113, 0.1),
+          transparent 40%
         ),
         var(--crema);
 
       color: var(--violeta);
       font-family: "Montserrat", sans-serif;
-      overflow-x: hidden;
     }
 
     .catalogo {
-      position: relative;
       min-height: 100vh;
       padding: 40px 24px;
+
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .forma {
-      position: absolute;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .forma-uno {
-      width: 220px;
-      height: 220px;
-      top: -70px;
-      right: -60px;
-      background: var(--rosa);
-      opacity: 0.55;
-    }
-
-    .forma-dos {
-      width: 160px;
-      height: 160px;
-      bottom: -45px;
-      left: -45px;
-      background: var(--violeta);
-      opacity: 0.12;
-    }
-
     .tarjeta {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 760px);
-      padding: clamp(42px, 8vw, 80px);
+      width: min(100%, 800px);
+      padding: clamp(48px, 8vw, 82px);
       text-align: center;
 
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.75);
+
       border: 1px solid rgba(75, 28, 113, 0.12);
-      border-radius: 34px;
+      border-radius: 28px;
 
       box-shadow:
-        0 30px 80px rgba(75, 28, 113, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        0 30px 75px rgba(75, 28, 113, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -109,34 +94,30 @@
     .etiqueta {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      margin-bottom: 25px;
-      padding: 10px 18px;
+      justify-content: center;
+
+      margin-bottom: 28px;
+      padding: 11px 20px;
 
       color: var(--violeta);
-      background: rgba(234, 167, 186, 0.34);
-      border-radius: 999px;
+      background: var(--rosa-claro);
+      border-radius: 8px;
 
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-family: "Courier New", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      line-height: 1;
       text-transform: uppercase;
     }
 
-    .punto {
-      width: 9px;
-      height: 9px;
-      background: var(--rosa);
-      border-radius: 50%;
-      box-shadow: 0 0 0 5px rgba(234, 167, 186, 0.22);
-    }
-
     h1 {
-      max-width: 620px;
-      margin: 0 auto 22px;
+      max-width: 660px;
+      margin: 0 auto 24px;
 
       font-family: "Literata", serif;
-      font-size: clamp(2.6rem, 8vw, 5rem);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 600;
       line-height: 0.98;
       letter-spacing: -0.055em;
     }
@@ -146,36 +127,44 @@
     }
 
     .descripcion {
-      max-width: 560px;
+      max-width: 590px;
       margin: 0 auto;
 
       color: rgba(75, 28, 113, 0.78);
-      font-size: clamp(1rem, 2.2vw, 1.18rem);
-      line-height: 1.7;
+      font-size: clamp(1rem, 2vw, 1.16rem);
+      line-height: 1.75;
     }
 
     .acciones {
-      margin-top: 35px;
+      margin-top: 38px;
+
       display: flex;
+      align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 13px;
+      gap: 15px;
     }
 
     .boton {
-      min-width: 180px;
-      padding: 15px 24px;
+      min-width: 220px;
+      min-height: 62px;
+      padding: 17px 28px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      border: 2px solid var(--violeta);
-      border-radius: 999px;
+      border: 2px solid var(--rosa);
+      border-radius: 10px;
 
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-family: "Courier New", monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-align: center;
       text-decoration: none;
+      text-transform: uppercase;
 
       transition:
         transform 0.2s ease,
@@ -185,13 +174,15 @@
     }
 
     .boton-principal {
-      color: var(--blanco);
-      background: var(--violeta);
-      box-shadow: 0 12px 28px rgba(75, 28, 113, 0.2);
+      color: var(--marron);
+      background: var(--rosa);
+
+      box-shadow:
+        0 12px 25px rgba(75, 28, 113, 0.12);
     }
 
     .boton-secundario {
-      color: var(--violeta);
+      color: var(--marron);
       background: transparent;
     }
 
@@ -200,64 +191,92 @@
     }
 
     .boton-principal:hover {
-      box-shadow: 0 17px 34px rgba(75, 28, 113, 0.27);
+      background: #f0b5c5;
+
+      box-shadow:
+        0 17px 32px rgba(75, 28, 113, 0.17);
     }
 
     .boton-secundario:hover {
-      color: var(--blanco);
-      background: var(--violeta);
+      background: var(--rosa);
+    }
+
+    .boton:focus-visible {
+      outline: 3px solid rgba(75, 28, 113, 0.3);
+      outline-offset: 4px;
     }
 
     .firma {
       margin-top: 42px;
-      color: var(--marron);
+
+      color: var(--marron-claro);
       font-family: "Literata", serif;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       font-style: italic;
+      line-height: 1.5;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 600px) {
       .catalogo {
         padding: 20px 16px;
       }
 
       .tarjeta {
         padding: 48px 22px;
-        border-radius: 26px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 13vw, 3.8rem);
+      }
+
+      .descripcion br {
+        display: none;
+      }
+
+      .acciones {
+        width: 100%;
       }
 
       .boton {
         width: 100%;
+        min-width: 0;
+      }
+
+      .firma {
+        margin-top: 34px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="catalogo">
 
-    <div class="forma forma-uno"></div>
-    <div class="forma forma-dos"></div>
+  <main class="catalogo">
 
     <section class="tarjeta">
 
       <div class="etiqueta">
-        <span class="punto"></span>
         Estamos trabajando
       </div>
 
       <h1>
-        Nuestro catálogo está <span>en preparación.</span>
+        Nuestro catálogo está
+        <span>en preparación.</span>
       </h1>
 
       <p class="descripcion">
         Estamos terminando de ordenar todos nuestros servicios para que
         puedas conocerlos sin vueltas y encontrar lo que mejor encaje con
-        tu marca.<br> Muy pronto vas a poder verlo completo.
+        tu marca. Muy pronto vas a poder verlo completo.
       </p>
 
       <div class="acciones">
-        <a class="boton boton-principal" href="index.html">
+
+        <a
+          class="boton boton-principal"
+          href="./index.html"
+        >
           Volver al inicio
         </a>
 
@@ -269,11 +288,16 @@
         >
           Ver Instagram
         </a>
+
       </div>
 
-      <p class="firma">Mientras tanto, seguimos potenciando vidrieras.</p>
+      <p class="firma">
+        Mientras tanto, seguimos potenciando vidrieras.
+      </p>
 
     </section>
+
   </main>
+
 </body>
 </html>

@@ -1899,41 +1899,50 @@
       </div>
 
     </div>
-  </footer>
+   </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const track = document.querySelector("#casos .cases-grid");
-      const prevBtn = document.querySelector("#casos .cases-arrow.prev");
-      const nextBtn = document.querySelector("#casos .cases-arrow.next");
+      const carousels = document.querySelectorAll("[data-carousel]");
 
-      if (!track || !prevBtn || !nextBtn) {
-        return;
-      }
+      carousels.forEach(function (carousel) {
+        const track = carousel.querySelector(".works-track");
+        const previousButton = carousel.querySelector(".works-arrow.prev");
+        const nextButton = carousel.querySelector(".works-arrow.next");
 
-      function getScrollAmount() {
-        const card = track.querySelector(".case-card");
-
-        if (!card) {
-          return track.clientWidth;
+        if (!track || !previousButton || !nextButton) {
+          return;
         }
 
-        const gap = parseInt(getComputedStyle(track).gap, 10) || 0;
+        function getScrollAmount() {
+          const card = track.querySelector(".work-card");
 
-        return card.offsetWidth + gap;
-      }
+          if (!card) {
+            return track.clientWidth;
+          }
 
-      prevBtn.addEventListener("click", function () {
-        track.scrollBy({
-          left: -getScrollAmount(),
-          behavior: "smooth"
+          const trackStyles = window.getComputedStyle(track);
+
+          const gap =
+            parseFloat(trackStyles.columnGap) ||
+            parseFloat(trackStyles.gap) ||
+            0;
+
+          return card.getBoundingClientRect().width + gap;
+        }
+
+        previousButton.addEventListener("click", function () {
+          track.scrollBy({
+            left: -getScrollAmount(),
+            behavior: "smooth"
+          });
         });
-      });
 
-      nextBtn.addEventListener("click", function () {
-        track.scrollBy({
-          left: getScrollAmount(),
-          behavior: "smooth"
+        nextButton.addEventListener("click", function () {
+          track.scrollBy({
+            left: getScrollAmount(),
+            behavior: "smooth"
+          });
         });
       });
     });

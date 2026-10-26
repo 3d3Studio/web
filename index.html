@@ -89,9 +89,9 @@
     }
 
     .wrap {
-      width: min(100%, 1120px);
+      width: min(100%, 1480px);
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 40px;
     }
 
     section {
@@ -283,6 +283,107 @@
       border-bottom: 1px solid var(--line-light);
     }
 
+    .hero .wrap {
+      width: min(100%, 1600px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.82fr);
+      align-items: center;
+      gap: clamp(44px, 6vw, 100px);
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-media {
+      position: relative;
+      width: 100%;
+      max-height: min(72vh, 760px);
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #35104F;
+      border: 1px solid rgba(244, 239, 228, 0.28);
+      border-radius: 28px;
+      box-shadow: 0 28px 70px rgba(20, 4, 31, 0.28);
+    }
+
+    .hero-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-media::after {
+      position: absolute;
+      inset: 35% 0 0;
+      content: "";
+      background: linear-gradient(180deg, transparent, rgba(33, 10, 43, 0.88));
+      pointer-events: none;
+    }
+
+    .hero-media-caption {
+      position: absolute;
+      z-index: 1;
+      right: 28px;
+      bottom: 26px;
+      left: 28px;
+      color: var(--cream);
+    }
+
+    .hero-media-caption span {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--btn);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-media-caption strong {
+      display: block;
+      font-family: var(--display);
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height: 0.98;
+    }
+
+    .services-ribbon {
+      padding: 22px 0;
+      color: var(--cream);
+      background: var(--charcoal-dark);
+      border-bottom: 1px solid rgba(244, 239, 228, 0.15);
+    }
+
+    .services-ribbon .wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px 32px;
+    }
+
+    .services-ribbon span {
+      color: rgba(244, 239, 228, 0.82);
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .services-ribbon span + span::before {
+      margin-right: 30px;
+      color: var(--signal);
+      content: "/";
+    }
+
     .rec-row {
       margin-bottom: 40px;
 
@@ -324,7 +425,7 @@
     }
 
     h1 {
-      max-width: 850px;
+      max-width: 760px;
 
       font-family: var(--display);
       font-size: clamp(46px, 7vw, 78px);
@@ -339,7 +440,7 @@
     }
 
     .hero-sub {
-      max-width: 620px;
+      max-width: 590px;
       margin-top: 28px;
 
       color: rgba(244, 239, 228, 0.78);
@@ -376,7 +477,7 @@
     /* TÍTULOS DE SECCIÓN */
 
     h2 {
-      max-width: 780px;
+      max-width: 960px;
       margin-bottom: 18px;
 
       color: var(--ink);
@@ -389,7 +490,7 @@
     }
 
     .section-lede {
-      max-width: 880px;
+      max-width: 1040px;
       margin-bottom: 48px;
 
       color: var(--ink-soft);
@@ -448,12 +549,12 @@
 #casos .works-carousel {
   position: relative;
 
-  width: min(100%, 980px);
+  width: min(100%, 1220px);
   margin: 0 auto;
 }
 
 #casos .video-block .works-carousel {
-  width: min(100%, 900px);
+  width: min(100%, 1100px);
 }
 
 #casos .works-track {
@@ -1167,17 +1268,70 @@
 
     /* MOBILE */
 
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr);
+        gap: 34px;
+      }
+
+      .hero-media {
+        max-height: 620px;
+      }
+
+      .services-ribbon .wrap {
+        justify-content: flex-start;
+        column-gap: 22px;
+      }
+
+      .services-ribbon span + span::before {
+        margin-right: 20px;
+      }
+    }
+
     @media (max-width: 720px) {
       section {
         padding: 62px 0;
       }
 
       .wrap {
-        padding: 0 19px;
+        padding: 0 22px;
       }
 
       .hero {
-        padding: 70px 0 45px;
+        padding: 58px 0 42px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .hero-media {
+        width: min(100%, 520px);
+        max-height: 620px;
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero-media-caption {
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+      }
+
+      .services-ribbon {
+        padding: 18px 0;
+      }
+
+      .services-ribbon .wrap {
+        gap: 12px 18px;
+      }
+
+      .services-ribbon span {
+        font-size: 11px;
+      }
+
+      .services-ribbon span + span::before {
+        margin-right: 16px;
       }
 
       h1 {
@@ -1349,9 +1503,13 @@
   <div class="hero">
     <div class="wrap">
 
+      <div class="hero-grid">
+
+        <div class="hero-copy">
+
       <div class="rec-row">
         <span class="rec-dot"></span>
-        Grabando - 3D3.studio
+        Estudio creativo · CABA
       </div>
 
       <h1>
@@ -1369,7 +1527,7 @@
       <div class="hero-cta">
 
         <a href="#casos" class="btn btn-signal">
-          Ver trabajos reales
+          Mirá lo que hicimos
         </a>
 
         <a href="#contacto" class="btn btn-light">
@@ -1382,6 +1540,28 @@
         <span>3D3.STUDIO - CABA</span>
       </div>
 
+        </div>
+
+        <figure class="hero-media">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="Producción de fotografía de producto para una marca de cosmética">
+            <source src="./productos.mp4" type="video/mp4">
+          </video>
+          <figcaption class="hero-media-caption">
+            <span>Producción de contenido · Cosmiatra</span>
+            <strong>Una marca también se muestra en los detalles.</strong>
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="services-ribbon" aria-label="Servicios de 3D3 Studio">
+    <div class="wrap">
+      <span>Diseño gráfico</span>
+      <span>Foto y video</span>
+      <span>Contenido para redes</span>
     </div>
   </div>
 
@@ -2018,3 +2198,4 @@
 </script>
 </body>
 </html>
+
